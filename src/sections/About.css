@@ -1,0 +1,243 @@
+
+.about-section {
+  position: relative;
+  padding: 100px 8% 55px;
+  background: #080808;
+  color: #fff;
+  overflow: hidden;
+}
+
+.about-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #303030;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #e3182b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.section-label span {
+  width: 30px;
+  height: 2px;
+  background: #e3182b;
+}
+
+.about-index {
+  color: #777;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 8%;
+  padding: 85px 0;
+  align-items: center;
+}
+
+.about-heading h2 {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(55px, 7vw, 100px);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 0.95;
+  letter-spacing: -2px;
+}
+
+.about-heading h2 span {
+  color: #e3182b;
+}
+
+.about-description {
+  max-width: 500px;
+}
+
+.about-intro {
+  font-size: clamp(21px, 2.3vw, 29px);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 25px;
+}
+
+.about-description > p:not(.about-intro) {
+  color: #aaa;
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.about-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid #e3182b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: 0.3s ease;
+}
+
+.about-link svg {
+  color: #e3182b;
+}
+
+.about-link:hover {
+  color: #e3182b;
+  gap: 22px;
+}
+
+.about-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 25px 0 0;
+  border-top: 1px solid #303030;
+  color: #ddd;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(18px, 2.5vw, 29px);
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.about-cross {
+  color: #e3182b;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 75px 6% 40px;
+  }
+
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 0;
+  }
+
+  .about-heading h2 {
+    font-size: clamp(52px, 12vw, 75px);
+  }
+
+  .about-description > p:not(.about-intro) {
+    font-size: 14px;
+  }
+
+  .about-bottom {
+    justify-content: center;
+    gap: 12px;
+    font-size: 17px;
+    letter-spacing: 1px;
+  }
+
+  .about-index {
+    font-size: 9px;
+  }
+}
+
+
+/* MOBILE RESPONSIVENESS IMPROVEMENTS */
+
+@media (max-width: 768px) {
+  .about-section {
+    width: 100%;
+    padding: 65px 24px 35px;
+    overflow: hidden;
+  }
+
+  .about-top {
+    gap: 12px;
+    align-items: center;
+  }
+
+  .about-top .section-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .about-top .section-label span {
+    width: 24px;
+    flex-shrink: 0;
+  }
+
+  .about-layout {
+    width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+    padding: 48px 0;
+  }
+
+  .about-heading h2 {
+    font-size: clamp(40px, 10vw, 66px);
+    line-height: 0.98;
+    letter-spacing: -1px;
+    overflow-wrap: break-word;
+  }
+
+  .about-description {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-intro {
+    font-size: clamp(19px, 5vw, 24px);
+    line-height: 1.45;
+    margin-bottom: 18px;
+  }
+
+  .about-description > p:not(.about-intro) {
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .about-link {
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  .about-bottom {
+    justify-content: flex-start;
+    gap: 12px;
+    font-size: clamp(14px, 4vw, 18px);
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 380px) {
+  .about-section {
+    padding-left: 19px;
+    padding-right: 19px;
+  }
+
+  .about-heading h2 {
+    font-size: clamp(36px, 9.5vw, 43px);
+  }
+
+  .about-top .section-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .about-intro {
+    font-size: 19px;
+  }
+}

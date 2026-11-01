@@ -1,0 +1,268 @@
+
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: #080808;
+  color: #ffffff;
+}
+
+/* Background video */
+
+.intro-video {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Uniform darkness across the whole video */
+
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Subtle racing-red atmosphere */
+
+.intro-red-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(181, 18, 32, 0.10),
+      transparent 48%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.18),
+      transparent 35%,
+      rgba(0, 0, 0, 0.35)
+    );
+}
+
+/* Main content */
+
+.intro-content {
+  width: min(760px, 88vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 0;
+}
+
+.intro-logo-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 28px;
+  filter:
+    drop-shadow(0 0 8px rgba(181, 18, 32, 0.35))
+    drop-shadow(0 0 22px rgba(181, 18, 32, 0.16));
+}
+
+.intro-logo {
+  display: block;
+  width: clamp(150px, 22vw, 235px);
+  max-height: 125px;
+  object-fit: contain;
+}
+
+/* Typography */
+
+.intro-title {
+  font-family: 'Rajdhani', 'Space Grotesk', sans-serif;
+  font-size: clamp(38px, 6vw, 62px);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  line-height: 1.1;
+}
+
+.intro-title-red {
+  color: #e21b2d;
+}
+
+.intro-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 20px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(13px, 2vw, 19px);
+  font-weight: 600;
+  letter-spacing: 0.42em;
+}
+
+.intro-location span {
+  width: clamp(35px, 9vw, 95px);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.intro-tagline {
+  margin-top: 28px;
+  font-size: clamp(11px, 1.5vw, 15px);
+  font-weight: 500;
+  letter-spacing: 0.35em;
+}
+
+.intro-tagline strong {
+  color: #e21b2d;
+  font-weight: 700;
+}
+
+/* Progress */
+
+.intro-progress-section {
+  width: 100%;
+  margin-top: 82px;
+}
+
+.intro-progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.intro-percentage {
+  font-size: 25px;
+  letter-spacing: 0;
+}
+
+.intro-progress-track {
+  width: 100%;
+  height: 11px;
+  padding: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.intro-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #a80d1c, #ed2639);
+  box-shadow: 0 0 12px rgba(226, 27, 45, 0.55);
+  transition: width 0.12s linear;
+}
+
+/* Corner accents */
+
+.intro-corner {
+  position: absolute;
+  width: 65px;
+  height: 65px;
+  border-color: #e21b2d;
+  border-style: solid;
+  opacity: 0.9;
+}
+
+.intro-corner-left {
+  top: 4.5%;
+  left: 2.3%;
+  border-width: 2px 0 0 2px;
+}
+
+.intro-corner-right {
+  right: 2.3%;
+  bottom: 4.5%;
+  border-width: 0 2px 2px 0;
+}
+
+.intro-stripes {
+  position: absolute;
+  width: 48px;
+  height: 24px;
+  opacity: 0.9;
+  transform: skewX(-30deg);
+  background: repeating-linear-gradient(
+    90deg,
+    #b51220 0 9px,
+    transparent 9px 16px
+  );
+}
+
+.intro-stripes-top {
+  top: 5%;
+  right: 7%;
+}
+
+.intro-stripes-bottom {
+  bottom: 5%;
+  left: 7%;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .intro-content {
+    width: 86vw;
+  }
+
+  .intro-logo {
+    width: 155px;
+  }
+
+  .intro-logo-wrapper {
+    margin-bottom: 22px;
+  }
+
+  .intro-title {
+    letter-spacing: 0.12em;
+  }
+
+  .intro-location {
+    gap: 10px;
+    letter-spacing: 0.25em;
+  }
+
+  .intro-tagline {
+    letter-spacing: 0.16em;
+  }
+
+  .intro-progress-section {
+    margin-top: 65px;
+  }
+
+  .intro-progress-info {
+    font-size: 11px;
+  }
+
+  .intro-percentage {
+    font-size: 21px;
+  }
+
+  .intro-corner {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-progress-fill {
+    transition: none;
+  }
+}

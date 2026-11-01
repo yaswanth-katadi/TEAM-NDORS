@@ -1,0 +1,329 @@
+
+.achievements-page {
+  background: #080808;
+  color: #fff;
+}
+
+/* HERO */
+
+.achievements-hero {
+  height: 85vh;
+  min-height: 650px;
+  max-height: 900px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  overflow: hidden;
+}
+
+.achievements-hero-image,
+.achievements-hero-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.achievements-hero-image {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.65);
+}
+
+.achievements-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.94),
+    rgba(0, 0, 0, 0.65) 55%,
+    rgba(0, 0, 0, 0.15)
+  );
+}
+
+.achievements-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 850px;
+  padding-top: 50px;
+}
+
+.achievements-hero-content h1 {
+  margin-top: 30px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(60px, 8vw, 110px);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 0.9;
+}
+
+.achievements-hero-content h1 span {
+  display: block;
+  color: #e3182b;
+}
+
+.achievements-hero-content > p {
+  max-width: 470px;
+  margin-top: 30px;
+  color: #ccc;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.achievements-hero-content > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 38px;
+  padding: 15px 23px;
+  background: #b51220;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.achievements-hero-content > a:hover {
+  background: #e3182b;
+}
+
+.achievements-hero-index {
+  position: absolute;
+  right: 8%;
+  bottom: 35px;
+  color: #ddd;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+/* INTRO */
+
+.achievements-intro {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 70px;
+  padding: 110px 8%;
+  border-bottom: 1px solid #292929;
+}
+
+.achievements-intro h2,
+.achievement-heading h2,
+.achievement-records h2 {
+  margin-top: 22px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(43px, 5vw, 70px);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 0.98;
+}
+
+.achievements-intro h2 span,
+.achievement-heading h2 span,
+.achievement-records h2 span {
+  display: block;
+  color: #e3182b;
+}
+
+.achievements-intro > p {
+  color: #999;
+  font-size: 14px;
+  line-height: 2;
+}
+
+/* HIGHLIGHTS */
+
+.achievement-highlights {
+  padding: 110px 8%;
+}
+
+.achievement-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 55px;
+}
+
+.achievement-side-label {
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.achievement-card {
+  min-width: 0;
+  background: #111;
+  border: 1px solid #292929;
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-7px);
+  border-color: #b51220;
+}
+
+.achievement-image {
+  position: relative;
+  height: 270px;
+  overflow: hidden;
+}
+
+.achievement-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+  transition: transform 0.6s ease;
+}
+
+.achievement-card:hover .achievement-image img {
+  transform: scale(1.06);
+}
+
+.achievement-number {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.achievement-arrow {
+  position: absolute;
+  right: 17px;
+  bottom: 17px;
+  color: #fff;
+  background: #b51220;
+  padding: 8px;
+  width: 42px;
+  height: 42px;
+}
+
+.achievement-card-content {
+  padding: 27px 23px 30px;
+}
+
+.achievement-card-content > span {
+  color: #e3182b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.achievement-card-content h3 {
+  margin-top: 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 25px;
+}
+
+.achievement-card-content p {
+  margin-top: 12px;
+  color: #999;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* OFFICIAL RECORDS */
+
+.achievement-records {
+  padding: 100px 8%;
+  background: #111;
+  text-align: center;
+}
+
+.achievement-records h2 {
+  max-width: 850px;
+  margin: 25px auto;
+}
+
+.achievement-records > p {
+  max-width: 550px;
+  margin: 0 auto;
+  color: #999;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.achievement-record-placeholder {
+  max-width: 750px;
+  margin: 50px auto 0;
+  padding: 45px 25px;
+  border: 1px solid #393939;
+  border-top: 2px solid #b51220;
+  background: #0b0b0b;
+}
+
+.achievement-record-placeholder span {
+  color: #e3182b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.achievement-record-placeholder p {
+  margin-top: 13px;
+  color: #888;
+  font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .achievement-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .achievement-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .achievements-hero {
+    min-height: 600px;
+    height: 78vh;
+    padding: 0 6%;
+  }
+
+  .achievements-intro {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 75px 6%;
+  }
+
+  .achievement-highlights {
+    padding: 75px 6%;
+  }
+
+  .achievement-records {
+    padding: 75px 6%;
+  }
+}
+
+@media (max-width: 550px) {
+  .achievement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievements-hero-content h1 {
+    font-size: 62px;
+  }
+
+  .achievement-image {
+    height: 250px;
+  }
+
+  .achievement-records h2 {
+    font-size: 42px;
+  }
+}
