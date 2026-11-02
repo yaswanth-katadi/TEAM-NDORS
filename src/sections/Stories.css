@@ -1,31 +1,15 @@
 
-/* ==========================================
-   TEAM NDORS — THE CHRONICLES
-   Editorial motorsport gallery
-========================================== */
-
 .stories-section {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding: clamp(75px, 9vw, 125px) 8%;
   color: #f4f4f4;
-
   background:
-    radial-gradient(
-      ellipse at 8% 15%,
-      rgba(181, 18, 32, .15),
-      transparent 36%
-    ),
-    radial-gradient(
-      ellipse at 90% 85%,
-      rgba(179, 128, 77, .10),
-      transparent 38%
-    ),
+    radial-gradient(ellipse at 8% 15%, rgba(181, 18, 32, .15), transparent 36%),
+    radial-gradient(ellipse at 90% 85%, rgba(179, 128, 77, .10), transparent 38%),
     linear-gradient(135deg, #202125, #121316 55%, #1c1d20);
 }
-
-/* Engineering grid */
 
 .stories-section::before {
   content: '';
@@ -34,11 +18,9 @@
   z-index: -1;
   pointer-events: none;
   opacity: .45;
-
   background-image:
     linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-
   background-size: 64px 64px;
 }
 
@@ -47,9 +29,9 @@
 .stories-header {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   gap: 40px;
-  margin-bottom: 55px;
+  margin-bottom: 48px;
 }
 
 .stories-header h2 {
@@ -57,7 +39,6 @@
   font-family: var(--font-heading);
   font-size: clamp(43px, 6vw, 78px);
   font-weight: 500;
-  font-style: normal;
   line-height: 1.02;
   letter-spacing: -.05em;
 }
@@ -72,42 +53,61 @@
   color: #c1c1c5;
   font-family: var(--font-body);
   font-size: 14px;
-  font-weight: 400;
   line-height: 1.9;
 }
 
-/* Gallery layout */
+/* Horizontal stories gallery */
 
 .stories-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
   align-items: stretch;
-  gap: 24px;
+  gap: 22px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 5px 2px 24px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #b51220 #303238;
 }
 
-/* Glass cards */
+.stories-grid::-webkit-scrollbar {
+  height: 5px;
+}
+
+.stories-grid::-webkit-scrollbar-track {
+  background: #303238;
+  border-radius: 10px;
+}
+
+.stories-grid::-webkit-scrollbar-thumb {
+  background: #b51220;
+  border-radius: 10px;
+}
+
+/* Story cards */
 
 .story-card {
   position: relative;
   display: flex;
+  flex: 0 0 clamp(250px, 26vw, 315px);
   flex-direction: column;
   min-width: 0;
   overflow: hidden;
-
+  scroll-snap-align: start;
   background: linear-gradient(
     145deg,
     rgba(255,255,255,.09),
     rgba(255,255,255,.025)
   );
-
   border: 1px solid rgba(255,255,255,.13);
   border-radius: 12px;
-
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-
   box-shadow: 0 18px 45px rgba(0,0,0,.22);
-
   transition:
     transform 400ms cubic-bezier(.22,1,.36,1),
     border-color 350ms ease,
@@ -115,19 +115,20 @@
 }
 
 .story-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-7px);
   border-color: rgba(229,43,59,.65);
   box-shadow:
     0 25px 55px rgba(0,0,0,.32),
     0 0 24px rgba(181,18,32,.08);
 }
 
-/* Image area */
+/* Images */
 
 .story-image {
   position: relative;
-  height: clamp(210px, 22vw, 290px);
+  height: 205px;
   overflow: hidden;
+  flex-shrink: 0;
   background: #28292c;
 }
 
@@ -136,7 +137,6 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-
   background: linear-gradient(
     0deg,
     rgba(0,0,0,.48),
@@ -147,10 +147,9 @@
 .story-image img {
   width: 100%;
   height: 100%;
+  display: block;
   object-fit: cover;
-
   filter: brightness(.88) saturate(1.08);
-
   transition:
     transform 850ms cubic-bezier(.22,1,.36,1),
     filter 450ms ease;
@@ -161,118 +160,100 @@
   filter: brightness(1) saturate(1.18);
 }
 
-/* Number */
+/* Image number */
 
 .story-number {
   position: absolute;
   z-index: 2;
-  top: 17px;
-  left: 19px;
-
+  top: 15px;
+  left: 17px;
   color: #fff;
   font-family: var(--font-technical);
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: 1px;
-
   text-shadow: 0 3px 12px rgba(0,0,0,.4);
 }
 
-/* Image arrow */
+/* Story cards use image and caption only; no overlay action arrow. */
 
-.story-image-arrow {
-  position: absolute;
-  z-index: 2;
-  right: 17px;
-  bottom: 17px;
-
-  width: 45px;
-  height: 45px;
-
-  display: grid;
-  place-items: center;
-
-  color: #fff;
-  background: rgba(181,18,32,.88);
-  border: 1px solid rgba(255,255,255,.2);
-  border-radius: 7px;
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  transition:
-    transform 300ms ease,
-    background 300ms ease;
-}
-
-.story-card:hover .story-image-arrow {
-  background: #d51d2d;
-  transform: translate(3px,-3px);
-}
-
-/* Glass information area */
+/* Story information */
 
 .story-content {
   position: relative;
   flex: 1;
-  padding: 29px 26px 32px;
-
+  padding: 24px 21px 27px;
   background: linear-gradient(
     145deg,
     rgba(39,40,44,.68),
     rgba(19,20,23,.75)
   );
-
   border-top: 1px solid rgba(255,255,255,.09);
 }
 
 .story-category {
   display: inline-block;
-
   color: #ef5865;
   font-family: var(--font-technical);
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: .13em;
   line-height: 1.5;
 }
 
 .story-content h3 {
-  margin-top: 17px;
-
+  margin-top: 13px;
   color: #f4f4f4;
   font-family: var(--font-heading);
-  font-size: clamp(21px, 2vw, 27px);
+  font-size: 22px;
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: -.035em;
 }
 
 .story-content p {
-  margin-top: 13px;
-
+  margin-top: 11px;
   color: #b9bbc0;
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
-  line-height: 1.9;
+  line-height: 1.8;
+}
+
+/* Bottom scroll indicator */
+
+.stories-scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  color: #aaa;
+  font-family: var(--font-technical);
+  font-size: 10px;
+  letter-spacing: 1.8px;
+}
+
+.stories-scroll-line {
+  width: 65px;
+  height: 1px;
+  background: #b51220;
 }
 
 /* Tablet */
 
 @media (max-width: 1000px) {
-  .stories-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .stories-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
   }
 
+  .story-card {
+    flex-basis: 285px;
+  }
+
   .story-image {
-    height: 260px;
+    height: 195px;
   }
 }
 
@@ -284,7 +265,7 @@
   }
 
   .stories-header {
-    margin-bottom: 34px;
+    margin-bottom: 32px;
   }
 
   .stories-header h2 {
@@ -296,20 +277,29 @@
   }
 
   .stories-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 22px;
+    gap: 16px;
+    padding-bottom: 20px;
+  }
+
+  .story-card {
+    flex-basis: min(78vw, 300px);
   }
 
   .story-image {
-    height: clamp(220px, 65vw, 300px);
+    height: 190px;
   }
 
   .story-content {
-    padding: 25px 22px 28px;
+    padding: 22px 19px 24px;
   }
 
   .story-content h3 {
-    font-size: 24px;
+    font-size: 21px;
+  }
+
+  .stories-scroll-hint {
+    font-size: 9px;
+    gap: 10px;
   }
 }
 
@@ -318,12 +308,12 @@
     padding-inline: 17px;
   }
 
-  .story-image {
-    height: 215px;
+  .story-card {
+    flex-basis: 82vw;
   }
 
-  .story-content {
-    padding: 22px 18px;
+  .story-image {
+    height: 180px;
   }
 }
 
@@ -332,7 +322,28 @@
 @media (prefers-reduced-motion: reduce) {
   .story-card,
   .story-image img,
-  .story-image-arrow {
-    transition: none;
+
+  .stories-grid {
+    scroll-behavior: auto;
+  }
+}
+
+
+.story-card {
+  min-height: 100%;
+}
+
+.stories-grid {
+  scroll-padding-inline: 2px;
+}
+
+@media (max-width: 650px) {
+  .stories-grid {
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 2px;
+  }
+
+  .story-card {
+    flex-basis: min(82vw, 320px);
   }
 }

@@ -15,6 +15,7 @@ const Home = lazy(() => import('./pages/Home'))
 const Teams = lazy(() => import('./pages/Teams'))
 const Achievements = lazy(() => import('./pages/Achievements'))
 const Alumni = lazy(() => import('./pages/Alumni'))
+const Domains = lazy(() => import('./pages/Domains'))
 
 const pageVariants = {
   initial: { opacity: 0, y: 18 },
@@ -65,6 +66,7 @@ function AnimatedRoutes() {
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/teams" element={<Teams />} />
+            <Route path="/domains" element={<Domains />} />
             <Route path="/achievements" element={<Achievements />} />
             <Route path="/alumni" element={<Alumni />} />
           </Routes>

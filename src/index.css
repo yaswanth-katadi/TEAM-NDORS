@@ -3,6 +3,7 @@
 
 @import "./styles/variables.css";
 @import "./styles/global.css";
+@import "./styles/responsive-system.css";
 
 * {
   margin: 0;

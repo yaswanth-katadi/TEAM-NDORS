@@ -3,7 +3,6 @@ import Hero from '../sections/Hero'
 import About from '../sections/About'
 import Vehicles from '../sections/Vehicles'
 import Stories from '../sections/Stories'
-import DirectorMessage from '../sections/DirectorMessage'
 
 function Home() {
   return (
@@ -12,7 +11,6 @@ function Home() {
       <About />
       <Vehicles />
       <Stories />
-      <DirectorMessage />
     </main>
   )
 }

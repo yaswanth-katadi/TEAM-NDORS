@@ -1,0 +1,243 @@
+
+/* ==========================================
+   NDORS SHARED RESPONSIVE SYSTEM
+   Consistent spacing, type and overflow rules
+========================================== */
+
+:root {
+  --page-gutter: clamp(18px, 6vw, 112px);
+  --page-section-space: clamp(64px, 8vw, 112px);
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  overflow-x: clip;
+}
+
+#root {
+  overflow-x: clip;
+}
+
+main {
+  width: 100%;
+  min-width: 0;
+}
+
+main > section {
+  min-width: 0;
+}
+
+.teams-page,
+.domains-page,
+.achievements-page,
+.alumni-page {
+  width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.section-label,
+.teams-eyebrow,
+.domains-eyebrow {
+  max-width: 100%;
+  line-height: 1.6;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+}
+
+.site-footer {
+  width: 100%;
+  border-radius: 0;
+}
+
+.footer-main {
+  min-width: 0;
+}
+
+.footer-brand,
+.footer-navigation,
+.footer-contact {
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .footer-main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.6;
+  }
+
+  .footer-tagline {
+    order: 3;
+  }
+}
+
+/* Keep headings consistent across all routes */
+.teams-hero h1,
+.domains-hero h1,
+.achievements-hero-content h1,
+.alumni-hero h1 {
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -.055em;
+}
+
+@media (max-width: 768px) {
+  .teams-hero,
+  .domains-hero {
+    padding-top: 112px;
+  }
+
+  .teams-content,
+  .domains-content {
+    width: min(92%, 1200px);
+  }
+
+  .faculty-card {
+    min-width: 0;
+  }
+
+  .faculty-info {
+    min-width: 0;
+  }
+
+  .faculty-info h3 {
+    overflow-wrap: anywhere;
+  }
+
+  .year-section-heading {
+    min-width: 0;
+  }
+
+  .coverflow-stage {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .carousel-footer {
+    width: min(100%, 720px);
+  }
+
+  .domain-card {
+    min-width: 0;
+  }
+
+  .domain-info {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .teams-hero h1,
+  .domains-hero h1 {
+    font-size: clamp(40px, 11vw, 56px);
+    overflow-wrap: anywhere;
+  }
+
+  .teams-hero p,
+  .domains-hero p {
+    font-size: 13px;
+  }
+
+  .faculty-card {
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .faculty-image {
+    width: 68px;
+    height: 78px;
+  }
+
+  .faculty-image svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .coverflow-stage {
+    height: 340px;
+  }
+
+  .member-card {
+    max-width: min(195px, 62vw);
+  }
+
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .domain-info ul {
+    gap: 8px;
+  }
+
+  .domain-info li {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: #df5964;
+  font-family: var(--font-technical);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  line-height: 1.6;
+}
+
+.section-label > span {
+  display: inline-block;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 2px;
+  background: var(--color-red);
+}

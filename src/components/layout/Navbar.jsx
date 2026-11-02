@@ -1,75 +1,53 @@
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import './Navbar.css'
-import { NavLink } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
-import { useState } from 'react'
 import logo from '../../assets/images/ndors-logo-optimized.png'
 
-const navItems = [
-  { name: 'HOME', path: '/' },
-  { name: 'TEAMS', path: '/teams' },
-  { name: 'ACHIEVEMENTS', path: '/achievements' },
-  { name: 'ALUMNI', path: '/alumni' },
+const links = [
+  { label: 'HOME', path: '/' },
+  { label: 'TEAMS', path: '/teams' },
+  { label: 'DOMAINS', path: '/domains' },
+  { label: 'ACHIEVEMENTS', path: '/achievements' },
+  { label: 'ALUMNI', path: '/alumni' },
 ]
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
 
-  function handleKeyDown(event) {
-    if (event.key === 'Escape') {
-      setMenuOpen(false)
-    }
-  }
+  const closeMenu = () => setMenuOpen(false)
 
   return (
-    <header className="site-header">
-      <div className="navbar">
-        <NavLink
-          to="/"
-          className="brand"
-          aria-label="Team NDORS, NIT Durgapur - Home"
-          onClick={() => setMenuOpen(false)}
-        >
-          <img src={logo} alt="Team NDORS racing logo" />
-          <span className="brand-divider" />
+    <header className={`site-navbar ${menuOpen ? 'menu-open' : ''}`}>
+      <NavLink to="/" className="navbar-brand" onClick={closeMenu}>
+        <img src={logo} alt="Team NDORS" />
+      </NavLink>
 
-          <div className="brand-name">
-            <strong>TEAM NDORS</strong>
-            <span>NIT DURGAPUR</span>
-          </div>
-        </NavLink>
+      <button
+        type="button"
+        className={`navbar-toggle ${menuOpen ? 'is-open' : ''}`}
+        onClick={() => setMenuOpen((open) => !open)}
+        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-expanded={menuOpen}
+      >
+        <span className="hamburger-line line-one" />
+        <span className="hamburger-line line-two" />
+        <span className="hamburger-line line-three" />
+      </button>
 
-        <nav
-          id="primary-navigation"
-          className={`nav-links ${menuOpen ? 'open' : ''}`}
-          aria-label="Main navigation"
-          onKeyDown={handleKeyDown}
-        >
-          {navItems.map((item) => (
+      <div className={`navbar-overlay ${menuOpen ? 'navbar-overlay-active' : ''}`}>
+        <nav className="navbar-overlay-links">
+          {links.map((link) => (
             <NavLink
-              key={item.path}
-              to={item.path}
-              end={item.path === '/'}
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                `nav-link ${isActive ? 'active' : ''}`
-              }
+              key={link.path}
+              to={link.path}
+              onClick={closeMenu}
+              className={({ isActive }) => isActive ? 'overlay-link active' : 'overlay-link'}
             >
-              {item.name}
+              {link.label}
             </NavLink>
           ))}
         </nav>
-
-        <button
-          type="button"
-          className="menu-toggle"
-          onClick={() => setMenuOpen((previous) => !previous)}
-          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={menuOpen}
-          aria-controls="primary-navigation"
-        >
-          {menuOpen ? <X size={25} aria-hidden="true" /> : <Menu size={25} aria-hidden="true" />}
-        </button>
       </div>
     </header>
   )

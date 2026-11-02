@@ -49,10 +49,10 @@
 
 .achievements-hero-content h1 {
   margin-top: 30px;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(60px, 8vw, 110px);
-  font-weight: 800;
-  font-style: italic;
+  font-weight: 600;
+  font-style: normal;
   line-height: 0.9;
 }
 
@@ -112,10 +112,10 @@
 .achievement-heading h2,
 .achievement-records h2 {
   margin-top: 22px;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-heading);
   font-size: clamp(43px, 5vw, 70px);
-  font-weight: 800;
-  font-style: italic;
+  font-weight: 600;
+  font-style: normal;
   line-height: 0.98;
 }
 
@@ -191,7 +191,7 @@
   position: absolute;
   top: 18px;
   left: 18px;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-heading);
   font-size: 25px;
   font-weight: 700;
 }
@@ -220,7 +220,7 @@
 
 .achievement-card-content h3 {
   margin-top: 14px;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-heading);
   font-size: 25px;
 }
 
@@ -325,5 +325,120 @@
 
   .achievement-records h2 {
     font-size: 42px;
+  }
+}
+
+
+/* Shared page rhythm and responsive refinements */
+.achievements-page {
+  width: 100%;
+  overflow: clip;
+}
+
+.achievements-hero {
+  min-height: min(760px, 88svh);
+  padding-top: 105px;
+}
+
+.achievements-hero-content h1,
+.achievements-intro h2,
+.achievement-heading h2,
+.achievement-records h2 {
+  font-family: var(--font-heading);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -.055em;
+  line-height: 1.04;
+}
+
+.achievement-card {
+  min-width: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.achievement-image {
+  height: clamp(190px, 22vw, 285px);
+}
+
+.achievement-card-content h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+@media (max-width: 900px) {
+  .achievements-intro {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .achievement-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .achievements-hero {
+    min-height: 520px;
+    height: auto;
+    padding: 125px 22px 85px;
+  }
+
+  .achievements-hero-content h1 {
+    font-size: clamp(42px, 11vw, 62px);
+    line-height: 1.02;
+    overflow-wrap: anywhere;
+  }
+
+  .achievements-hero-content > p {
+    margin-top: 22px;
+    font-size: 14px;
+  }
+
+  .achievements-hero-index {
+    right: 22px;
+    bottom: 22px;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .achievements-intro,
+  .achievement-highlights,
+  .achievement-records {
+    padding: 65px 22px;
+  }
+
+  .achievements-intro h2,
+  .achievement-heading h2,
+  .achievement-records h2 {
+    font-size: clamp(32px, 9vw, 46px);
+  }
+
+  .achievement-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .achievement-image {
+    height: 235px;
+  }
+
+  .achievement-card-content {
+    padding: 22px 19px 24px;
+  }
+
+  .achievement-record-placeholder {
+    margin-top: 32px;
+    padding: 30px 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .achievements-hero,
+  .achievements-intro,
+  .achievement-highlights,
+  .achievement-records {
+    padding-inline: 17px;
   }
 }
