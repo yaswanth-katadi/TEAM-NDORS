@@ -73,8 +73,8 @@ function Hero() {
         </p>
 
         <h1>
-          ENGINEERING
-          <span>BEYOND LIMITS.</span>
+          Engineering
+          <span>beyond limits.</span>
         </h1>
 
         <p className="hero-description">

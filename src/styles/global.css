@@ -1,0 +1,332 @@
+
+/* ==========================================
+   TEAM NDORS — PREMIUM GLOBAL DESIGN SYSTEM
+========================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  isolation: isolate;
+  position: relative;
+
+  background: #0b0c0e;
+  color: #e8e8e8;
+
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Layered engineering background */
+
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 12% 18%,
+      rgba(181, 18, 32, .19),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 85% 35%,
+      rgba(100, 115, 135, .13),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(150, 95, 55, .10),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      45deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+    #111316;
+
+  background-size:
+    auto,
+    auto,
+    auto,
+    70px 70px,
+    70px 70px,
+    auto;
+}
+
+
+/* Subtle grain texture */
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0.12;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: #f4f4f4;
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+h1 { font-weight: 600; }
+h2 { font-weight: 500; }
+h3, h4, h5, h6 { font-weight: 500; }
+
+p {
+  color: #b9bbc0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  color: #fff;
+  background: #b51220;
+}
+
+:focus-visible {
+  outline: 2px solid #d51d2d;
+  outline-offset: 4px;
+}
+
+/* Reusable glass effect */
+
+
+/* Premium glass surface */
+
+.glass-panel {
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    rgba(42, 44, 49, 0.72),
+    rgba(17, 18, 22, 0.48)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+
+  box-shadow:
+    0 16px 45px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    background 300ms ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(181, 18, 32, 0.45);
+  transform: translateY(-3px);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.075);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 10px;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+
+/* Reusable buttons */
+
+.ndors-button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+
+  border: 1px solid transparent;
+  border-radius: 5px;
+
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 280ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.ndors-button-primary {
+  color: #fff;
+  background: #b51220;
+  border-color: #b51220;
+}
+
+.ndors-button-primary:hover {
+  background: #d51d2d;
+  border-color: #d51d2d;
+  box-shadow: 0 8px 28px rgba(181, 18, 32, .22);
+  transform: translateY(-2px);
+}
+
+.ndors-button-secondary {
+  color: #fff;
+  background: rgba(255, 255, 255, .045);
+  border-color: rgba(255, 255, 255, .25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.ndors-button-secondary:hover {
+  background: rgba(181, 18, 32, .14);
+  border-color: rgba(181, 18, 32, .7);
+  transform: translateY(-2px);
+}
+
+/* Shared layout */
+
+.ndors-container {
+  width: min(90%, 1440px);
+  margin-inline: auto;
+}
+
+.ndors-section {
+  position: relative;
+  padding-block: clamp(72px, 9vw, 125px);
+}
+
+.ndors-section-dark {
+  background: rgba(17, 18, 20, .82);
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: #d84a55;
+  font-family: var(--font-technical);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .13em;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 23px;
+  height: 1px;
+  background: #b51220;
+}
+
+.technical-text {
+  font-family: var(--font-technical);
+  font-weight: 500;
+  letter-spacing: .07em;
+}
+
+.route-loading {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  color: #b9bbc0;
+}
+
+/* Smooth interactions */
+
+a,
+button,
+.glass-panel {
+  transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .ndors-section {
+    padding-block: 65px;
+  }
+
+  body::before {
+    background-size: auto, auto, 48px 48px, 48px 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
+
+
+/* Hide scrollbar without disabling scrolling */
+
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}

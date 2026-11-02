@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react'
 import Lenis from 'lenis'
 
@@ -10,6 +11,9 @@ function useSmoothScroll() {
       touchMultiplier: 1.5,
     })
 
+    // Make Lenis accessible to page navigation
+    window.__lenis = lenis
+
     let animationFrameId
 
     function raf(time) {
@@ -21,6 +25,11 @@ function useSmoothScroll() {
 
     return () => {
       cancelAnimationFrame(animationFrameId)
+
+      if (window.__lenis === lenis) {
+        delete window.__lenis
+      }
+
       lenis.destroy()
     }
   }, [])

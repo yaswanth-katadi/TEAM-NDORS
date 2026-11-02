@@ -1,123 +1,266 @@
 
+/* ==========================================
+   TEAM NDORS — THE CHRONICLES
+   Editorial motorsport gallery
+========================================== */
+
 .stories-section {
-  padding: 110px 8%;
-  background: #080808;
-  color: #fff;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(75px, 9vw, 125px) 8%;
+  color: #f4f4f4;
+
+  background:
+    radial-gradient(
+      ellipse at 8% 15%,
+      rgba(181, 18, 32, .15),
+      transparent 36%
+    ),
+    radial-gradient(
+      ellipse at 90% 85%,
+      rgba(179, 128, 77, .10),
+      transparent 38%
+    ),
+    linear-gradient(135deg, #202125, #121316 55%, #1c1d20);
 }
+
+/* Engineering grid */
+
+.stories-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .45;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+
+  background-size: 64px 64px;
+}
+
+/* Header */
 
 .stories-header {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  gap: 35px;
+  gap: 40px;
   margin-bottom: 55px;
 }
 
 .stories-header h2 {
   margin-top: 22px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(48px, 6vw, 82px);
-  font-weight: 800;
-  font-style: italic;
-  line-height: 0.95;
+  font-family: var(--font-heading);
+  font-size: clamp(43px, 6vw, 78px);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.02;
+  letter-spacing: -.05em;
 }
 
 .stories-header h2 span {
-  color: #e3182b;
+  display: block;
+  color: #e52b3b;
 }
 
 .stories-header > p {
-  max-width: 340px;
-  color: #999;
+  max-width: 350px;
+  color: #c1c1c5;
+  font-family: var(--font-body);
   font-size: 14px;
-  line-height: 1.8;
+  font-weight: 400;
+  line-height: 1.9;
 }
+
+/* Gallery layout */
 
 .stories-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
+  align-items: stretch;
+  gap: 24px;
 }
 
+/* Glass cards */
+
 .story-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   min-width: 0;
-  background: #111;
-  border: 1px solid #252525;
-  transition: transform 0.35s ease, border-color 0.35s ease;
+  overflow: hidden;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.09),
+    rgba(255,255,255,.025)
+  );
+
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 12px;
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow: 0 18px 45px rgba(0,0,0,.22);
+
+  transition:
+    transform 400ms cubic-bezier(.22,1,.36,1),
+    border-color 350ms ease,
+    box-shadow 350ms ease;
 }
 
 .story-card:hover {
-  transform: translateY(-7px);
-  border-color: #b51220;
+  transform: translateY(-8px);
+  border-color: rgba(229,43,59,.65);
+  box-shadow:
+    0 25px 55px rgba(0,0,0,.32),
+    0 0 24px rgba(181,18,32,.08);
 }
+
+/* Image area */
 
 .story-image {
   position: relative;
-  height: 270px;
+  height: clamp(210px, 22vw, 290px);
   overflow: hidden;
+  background: #28292c;
+}
+
+.story-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    0deg,
+    rgba(0,0,0,.48),
+    transparent 55%
+  );
 }
 
 .story-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.78);
-  transition: transform 0.6s ease, filter 0.4s ease;
+
+  filter: brightness(.88) saturate(1.08);
+
+  transition:
+    transform 850ms cubic-bezier(.22,1,.36,1),
+    filter 450ms ease;
 }
 
 .story-card:hover .story-image img {
-  transform: scale(1.06);
-  filter: brightness(0.95);
+  transform: scale(1.075);
+  filter: brightness(1) saturate(1.18);
 }
+
+/* Number */
 
 .story-number {
   position: absolute;
+  z-index: 2;
   top: 17px;
-  left: 18px;
-  color: white;
-  font-family: 'Rajdhani', sans-serif;
+  left: 19px;
+
+  color: #fff;
+  font-family: var(--font-technical);
   font-size: 25px;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  text-shadow: 0 3px 12px rgba(0,0,0,.4);
 }
+
+/* Image arrow */
 
 .story-image-arrow {
   position: absolute;
-  right: 16px;
-  bottom: 16px;
-  width: 43px;
-  height: 43px;
+  z-index: 2;
+  right: 17px;
+  bottom: 17px;
+
+  width: 45px;
+  height: 45px;
+
   display: grid;
   place-items: center;
-  background: #b51220;
-  color: white;
+
+  color: #fff;
+  background: rgba(181,18,32,.88);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 7px;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  transition:
+    transform 300ms ease,
+    background 300ms ease;
 }
 
+.story-card:hover .story-image-arrow {
+  background: #d51d2d;
+  transform: translate(3px,-3px);
+}
+
+/* Glass information area */
+
 .story-content {
-  padding: 27px 24px 30px;
+  position: relative;
+  flex: 1;
+  padding: 29px 26px 32px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(39,40,44,.68),
+    rgba(19,20,23,.75)
+  );
+
+  border-top: 1px solid rgba(255,255,255,.09);
 }
 
 .story-category {
-  color: #e3182b;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
+  display: inline-block;
+
+  color: #ef5865;
+  font-family: var(--font-technical);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  line-height: 1.5;
 }
 
 .story-content h3 {
-  margin-top: 15px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 26px;
-  font-weight: 700;
+  margin-top: 17px;
+
+  color: #f4f4f4;
+  font-family: var(--font-heading);
+  font-size: clamp(21px, 2vw, 27px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -.035em;
 }
 
 .story-content p {
-  margin-top: 12px;
-  color: #999;
+  margin-top: 13px;
+
+  color: #b9bbc0;
+  font-family: var(--font-body);
   font-size: 13px;
-  line-height: 1.8;
+  font-weight: 400;
+  line-height: 1.9;
 }
 
-@media (max-width: 900px) {
+/* Tablet */
+
+@media (max-width: 1000px) {
   .stories-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -125,106 +268,71 @@
   .stories-header {
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-
-@media (max-width: 600px) {
-  .stories-section {
-    padding: 75px 6%;
-  }
-
-  .stories-grid {
-    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .story-image {
-    height: 250px;
-  }
-
-  .stories-header h2 {
-    font-size: 49px;
+    height: 260px;
   }
 }
 
+/* Mobile */
 
-/* MOBILE RESPONSIVENESS IMPROVEMENTS */
-
-@media (max-width: 768px) {
+@media (max-width: 650px) {
   .stories-section {
-    width: 100%;
-    padding: 65px 24px;
-    overflow: hidden;
+    padding: 70px 22px;
   }
 
   .stories-header {
-    width: 100%;
-    gap: 18px;
-    margin-bottom: 35px;
-  }
-
-  .stories-header .section-label {
-    font-size: 10px;
-    letter-spacing: 2px;
+    margin-bottom: 34px;
   }
 
   .stories-header h2 {
-    font-size: clamp(38px, 10vw, 60px);
-    line-height: 0.98;
-    letter-spacing: -1px;
+    font-size: clamp(39px, 10vw, 55px);
   }
 
   .stories-header > p {
-    width: 100%;
-    max-width: 100%;
-    font-size: 14px;
-    line-height: 1.8;
+    font-size: 13px;
   }
 
   .stories-grid {
-    width: 100%;
     grid-template-columns: minmax(0, 1fr);
     gap: 22px;
   }
 
-  .story-card {
-    width: 100%;
-    min-width: 0;
-  }
-
   .story-image {
-    width: 100%;
-    height: clamp(200px, 65vw, 280px);
+    height: clamp(220px, 65vw, 300px);
   }
 
   .story-content {
-    padding: 24px 20px 26px;
+    padding: 25px 22px 28px;
   }
 
   .story-content h3 {
-    font-size: 25px;
-  }
-
-  .story-content p {
-    font-size: 13px;
-    line-height: 1.8;
+    font-size: 24px;
   }
 }
 
 @media (max-width: 380px) {
   .stories-section {
-    padding-left: 19px;
-    padding-right: 19px;
-  }
-
-  .stories-header h2 {
-    font-size: 38px;
+    padding-inline: 17px;
   }
 
   .story-image {
-    height: 210px;
+    height: 215px;
   }
 
   .story-content {
-    padding: 21px 17px;
+    padding: 22px 18px;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .story-card,
+  .story-image img,
+  .story-image-arrow {
+    transition: none;
   }
 }

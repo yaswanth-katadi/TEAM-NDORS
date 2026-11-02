@@ -1,13 +1,8 @@
+
 @import "tailwindcss";
 
-:root {
-  font-family: Inter, sans-serif;
-  color: #ffffff;
-  background: #080808;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
+@import "./styles/variables.css";
+@import "./styles/global.css";
 
 * {
   margin: 0;
@@ -22,12 +17,5 @@ html {
 body {
   min-width: 320px;
   min-height: 100vh;
-  background: #080808;
-}
-
-.route-loading {
-  min-height: 60vh;
-  display: grid;
-  place-items: center;
-  color: #e5e5e5;
+  background: transparent;
 }

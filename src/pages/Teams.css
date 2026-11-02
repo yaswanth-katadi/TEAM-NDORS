@@ -1,7 +1,15 @@
 
+/* =========================================
+   TEAM NDORS — TEAMS PAGE REDESIGN
+========================================= */
+
 .teams-page {
-  background: #080808;
-  color: #fff;
+  position: relative;
+  overflow: hidden;
+  color: #f2f2f2;
+  background:
+    radial-gradient(ellipse at 85% 30%, rgba(181,18,32,.12), transparent 38%),
+    linear-gradient(145deg, #17191d, #101113 55%, #191a1d);
 }
 
 /* HERO */
@@ -28,16 +36,13 @@
 .teams-hero-image {
   object-fit: cover;
   object-position: center 55%;
-  filter: brightness(0.65);
+  filter: brightness(.78) saturate(1.12);
 }
 
 .teams-hero-overlay {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.94) 0%,
-    rgba(0, 0, 0, 0.68) 48%,
-    rgba(0, 0, 0, 0.12) 100%
-  );
+  background:
+    linear-gradient(90deg, rgba(8,9,11,.94), rgba(8,9,11,.60) 55%, rgba(8,9,11,.12)),
+    linear-gradient(0deg, rgba(8,9,11,.65), transparent 60%);
 }
 
 .teams-hero-content {
@@ -51,105 +56,131 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  color: #ddd;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
+  color: #e0e0e0;
+  font-family: var(--font-technical);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 3px;
 }
 
 .section-label > span {
   width: 35px;
   height: 2px;
-  background: #e3182b;
+  background: #d51d2d;
 }
 
 .teams-hero-content h1 {
   margin-top: 30px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(65px, 9vw, 120px);
-  font-weight: 800;
-  font-style: italic;
-  line-height: 0.88;
+  font-family: var(--font-heading);
+  font-size: clamp(54px, 7.5vw, 104px);
+  font-weight: 600;
+  font-style: normal;
+  line-height: .98;
+  letter-spacing: -.055em;
 }
 
 .teams-hero-content h1 span {
   display: block;
-  color: #e3182b;
+  color: #e52b3b;
 }
 
 .teams-hero-content > p {
-  max-width: 430px;
-  margin-top: 30px;
-  color: #ccc;
+  max-width: 460px;
+  margin-top: 28px;
+  color: #d0d0d0;
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 .teams-hero-content > a {
   display: inline-flex;
   align-items: center;
   gap: 15px;
-  margin-top: 38px;
-  padding: 15px 23px;
-  background: #b51220;
+  margin-top: 35px;
+  padding: 16px 26px;
   color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  background: rgba(181,18,32,.88);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 5px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
   text-decoration: none;
-  transition: background 0.3s ease;
+  transition: .3s ease;
 }
 
 .teams-hero-content > a:hover {
-  background: #e3182b;
+  background: #d51d2d;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(181,18,32,.28);
 }
 
 .teams-hero-number {
   position: absolute;
   right: 8%;
   bottom: 35px;
-  color: #ddd;
-  font-size: 10px;
+  color: #fff;
+  font-family: var(--font-technical);
+  font-size: 13px;
   letter-spacing: 3px;
 }
 
 /* INTRO */
 
 .teams-intro {
+  position: relative;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.1fr .9fr;
   align-items: center;
   gap: 70px;
   padding: 110px 8%;
-  border-bottom: 1px solid #292929;
+
+  background:
+    radial-gradient(ellipse at 10% 50%, rgba(181,18,32,.10), transparent 45%),
+    linear-gradient(120deg, #202226, #151619 65%, #202124);
+
+  border-bottom: 1px solid rgba(255,255,255,.10);
 }
 
 .teams-intro h2,
 .team-years-heading h2 {
   margin-top: 22px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(43px, 5vw, 70px);
-  font-weight: 800;
-  font-style: italic;
-  line-height: 0.98;
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: -.045em;
 }
 
 .teams-intro h2 span,
 .team-years-heading h2 span {
   display: block;
-  color: #e3182b;
+  color: #e52b3b;
 }
 
 .teams-intro > p {
-  color: #999;
-  font-size: 14px;
-  line-height: 2;
+  color: #c0c1c5;
+  font-size: 15px;
+  line-height: 1.95;
+  padding: 28px;
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 /* YEAR GROUPS */
 
 .team-years {
+  position: relative;
   padding: 110px 8%;
+  background:
+    radial-gradient(ellipse at 90% 20%, rgba(181,18,32,.09), transparent 38%),
+    linear-gradient(150deg, #111316, #1b1d21);
 }
 
 .team-years-heading {
@@ -160,14 +191,35 @@
 }
 
 .team-years-side-label {
-  color: #777;
-  font-size: 11px;
+  color: #a9a9ae;
+  font-family: var(--font-technical);
+  font-size: 14px;
   letter-spacing: 2px;
 }
 
 .team-year-block {
-  padding: 35px 0;
-  border-top: 1px solid #303030;
+  position: relative;
+  margin-bottom: 24px;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 12px;
+
+  background: linear-gradient(
+    125deg,
+    rgba(255,255,255,.075),
+    rgba(255,255,255,.025)
+  );
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow: 0 15px 40px rgba(0,0,0,.18);
+  transition: border-color .3s ease, transform .3s ease;
+}
+
+.team-year-block:hover {
+  border-color: rgba(181,18,32,.55);
+  transform: translateY(-3px);
 }
 
 .team-year-heading {
@@ -177,50 +229,52 @@
 }
 
 .team-year-number {
-  color: #b51220;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 65px;
-  font-weight: 800;
+  color: #e52b3b;
+  font-family: var(--font-technical);
+  font-size: 62px;
+  font-weight: 600;
 }
 
 .team-year-heading h3 {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-family: var(--font-heading);
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -.02em;
 }
 
 .team-year-heading p {
   margin-top: 6px;
-  color: #888;
+  color: #b3b4b8;
   font-size: 13px;
 }
 
 .team-year-arrow {
   margin-left: auto;
-  color: #b51220;
+  color: #e52b3b;
   width: 25px;
   height: 25px;
 }
 
 .team-members-placeholder {
-  margin-top: 30px;
-  padding: 45px 25px;
-  background: #111;
-  border: 1px solid #292929;
+  margin-top: 25px;
+  padding: 38px 25px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 9px;
   text-align: center;
 }
 
 .team-members-placeholder span {
-  color: #b51220;
-  font-size: 11px;
-  font-weight: 700;
+  color: #ef5260;
+  font-family: var(--font-technical);
+  font-size: 15px;
+  font-weight: 500;
   letter-spacing: 2px;
 }
 
 .team-members-placeholder p {
   margin-top: 12px;
-  color: #888;
+  color: #b3b4b8;
   font-size: 13px;
 }
 
@@ -233,17 +287,9 @@
     padding: 0 6%;
   }
 
-  .teams-hero-overlay {
-    background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.9),
-      rgba(0, 0, 0, 0.35)
-    );
-  }
-
   .teams-intro {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 28px;
     padding: 75px 6%;
   }
 
@@ -257,12 +303,16 @@
     gap: 20px;
   }
 
+  .team-year-block {
+    padding: 24px 20px;
+  }
+
   .team-year-number {
     font-size: 48px;
   }
 
   .team-year-heading h3 {
-    font-size: 25px;
+    font-size: 22px;
   }
 }
 
@@ -272,7 +322,7 @@
   }
 
   .teams-hero-content h1 {
-    font-size: 65px;
+    font-size: clamp(48px, 12vw, 65px);
   }
 
   .teams-hero-content > p {
@@ -288,7 +338,7 @@
   }
 
   .team-year-heading h3 {
-    font-size: 21px;
+    font-size: 19px;
   }
 
   .team-year-heading p {

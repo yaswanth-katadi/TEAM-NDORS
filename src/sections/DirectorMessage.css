@@ -1,174 +1,285 @@
 
+/* ==========================================
+   TEAM NDORS — DIRECTOR MESSAGE
+========================================== */
+
 .director-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: .85fr 1.15fr;
   align-items: center;
-  gap: 80px;
-  padding: 110px 8%;
-  background: #111;
-  color: #fff;
+  gap: clamp(40px, 7vw, 90px);
+
+  padding: clamp(75px, 9vw, 125px) 8%;
+  color: #f5f5f5;
+
+  background:
+    radial-gradient(
+      ellipse at 8% 50%,
+      rgba(181,18,32,.16),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 90% 10%,
+      rgba(120,125,135,.09),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #202125, #111215 65%, #1b1c20);
 }
 
+/* Engineering background */
+
+.director-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+
+  background-size: 65px 65px;
+}
+
+/* Portrait frame */
+
 .director-image {
-  min-height: 430px;
+  position: relative;
+  min-height: 470px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 13px;
+
   background:
-    linear-gradient(145deg, #292929, #111);
-  border: 1px solid #343434;
-  position: relative;
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(181,18,32,.24),
+      transparent 45%
+    ),
+    linear-gradient(145deg, #34353a, #17181c 75%);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 25px 65px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.08);
 }
 
 .director-image::before {
   content: '';
   position: absolute;
-  inset: 14px;
-  border: 1px solid #b51220;
+  inset: 17px;
+
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 8px;
+
+  pointer-events: none;
+}
+
+.director-image::after {
+  content: '';
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  right: -65px;
+  bottom: -65px;
+
+  background: rgba(181,18,32,.19);
+  filter: blur(65px);
+  border-radius: 50%;
   pointer-events: none;
 }
 
 .director-image-placeholder {
+  position: relative;
+  z-index: 1;
   text-align: center;
-  color: #777;
+  padding: 25px;
 }
 
 .director-image-placeholder span {
   display: block;
-  color: #b51220;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 65px;
-  font-weight: 800;
+
+  color: #f0f0f0;
+  font-family: var(--font-heading);
+  font-size: clamp(55px, 7vw, 85px);
+  font-weight: 600;
+  letter-spacing: -.07em;
 }
 
 .director-image-placeholder p {
-  margin-top: 8px;
-  font-size: 11px;
-  letter-spacing: 4px;
+  margin-top: 12px;
+  color: #ed5865;
+  font-family: var(--font-technical);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .2em;
+}
+
+/* Message panel */
+
+.director-content {
+  position: relative;
+  padding: clamp(28px, 4vw, 50px);
+
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,.075),
+    rgba(255,255,255,.025)
+  );
+
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 13px;
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow: 0 20px 55px rgba(0,0,0,.2);
 }
 
 .director-content h2 {
   margin-top: 25px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(45px, 5vw, 70px);
-  font-weight: 800;
-  font-style: italic;
-  line-height: 1;
+
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 5vw, 66px);
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: -.05em;
 }
 
 .director-content h2 span {
   display: block;
-  color: #b51220;
+  color: #e52b3b;
 }
 
 .director-quote {
-  margin-top: 30px;
-  max-width: 560px;
-  color: #aaa;
+  position: relative;
+  margin-top: 28px;
+  max-width: 570px;
+  padding-left: 20px;
+
+  color: #c3c4c8;
+  font-family: var(--font-body);
   font-size: 15px;
-  line-height: 1.9;
+  font-weight: 400;
+  line-height: 2;
+
+  border-left: 2px solid rgba(181,18,32,.8);
 }
+
+/* Signature */
 
 .director-signature {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-top: 40px;
+  gap: 17px;
+  margin-top: 38px;
 }
 
 .signature-line {
-  width: 45px;
+  width: 38px;
   height: 2px;
-  background: #b51220;
+  flex-shrink: 0;
+  background: #e52b3b;
 }
 
 .director-signature h3 {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 21px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .director-signature p {
   margin-top: 5px;
-  color: #888;
-  font-size: 12px;
+  color: #a7a8ad;
+  font-family: var(--font-technical);
+  font-size: 13px;
+  letter-spacing: .08em;
 }
 
-@media (max-width: 768px) {
+/* Tablet and mobile */
+
+@media (max-width: 850px) {
   .director-section {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 35px;
     padding: 75px 6%;
   }
 
   .director-image {
-    min-height: 300px;
-  }
-}
-
-
-/* MOBILE RESPONSIVENESS IMPROVEMENTS */
-
-@media (max-width: 768px) {
-  .director-section {
-    width: 100%;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 32px;
-    padding: 65px 24px;
-    overflow: hidden;
-  }
-
-  .director-image {
-    width: 100%;
-    min-height: 300px;
-  }
-
-  .director-image-placeholder span {
-    font-size: 54px;
+    min-height: 340px;
   }
 
   .director-content {
-    width: 100%;
-    min-width: 0;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 550px) {
+  .director-section {
+    padding: 65px 20px;
+    gap: 25px;
+  }
+
+  .director-image {
+    min-height: 260px;
+  }
+
+  .director-image-placeholder span {
+    font-size: 60px;
+  }
+
+  .director-content {
+    padding: 25px 21px;
   }
 
   .director-content .section-label {
-    font-size: 10px;
-    letter-spacing: 2px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
   }
 
   .director-content h2 {
-    font-size: clamp(38px, 9vw, 58px);
-    line-height: 0.98;
-    overflow-wrap: break-word;
+    font-size: clamp(36px, 9vw, 49px);
   }
 
   .director-quote {
-    font-size: 14px;
-    line-height: 1.8;
-    margin-top: 22px;
+    font-size: 13px;
+    line-height: 1.9;
+    padding-left: 15px;
   }
 
   .director-signature {
-    margin-top: 28px;
-    gap: 12px;
-  }
-
-  .director-signature h3 {
-    font-size: 19px;
+    margin-top: 27px;
   }
 }
 
 @media (max-width: 380px) {
   .director-section {
-    padding-left: 19px;
-    padding-right: 19px;
+    padding-inline: 16px;
   }
 
-  .director-image {
-    min-height: 250px;
+  .director-content {
+    padding: 22px 17px;
   }
+}
 
-  .director-content h2 {
-    font-size: 36px;
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .director-section *,
+  .director-section *::before,
+  .director-section *::after {
+    transition: none !important;
   }
 }

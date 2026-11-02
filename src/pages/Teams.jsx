@@ -8,9 +8,9 @@ import heroBuggy from '../assets/images/hero-buggy.jpg'
 
 const yearGroups = [
   {
-    year: '02',
-    title: 'SECOND YEAR',
-    description: 'The next generation of NDORS engineers.',
+    year: '04',
+    title: 'FOURTH YEAR',
+    description: 'Experience, leadership and years of dedication.',
   },
   {
     year: '03',
@@ -18,9 +18,9 @@ const yearGroups = [
     description: 'Building experience through engineering and teamwork.',
   },
   {
-    year: '04',
-    title: 'FOURTH YEAR',
-    description: 'Experience, leadership and years of dedication.',
+    year: '02',
+    title: 'SECOND YEAR',
+    description: 'The next generation of NDORS engineers.',
   },
 ]
 

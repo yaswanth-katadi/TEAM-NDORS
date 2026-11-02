@@ -16,6 +16,10 @@ const Teams = lazy(() => import('./pages/Teams'))
 const Achievements = lazy(() => import('./pages/Achievements'))
 const Alumni = lazy(() => import('./pages/Alumni'))
 
+import { useEffect } from 'react'
+import BackgroundVideo from './components/common/BackgroundVideo'
+import { lazy, Suspense, useCallback, useState, useEffect } from 'react'
+
 const pageVariants = {
   initial: {
     opacity: 0,
@@ -41,6 +45,18 @@ const pageVariants = {
 
 function AnimatedRoutes() {
   const location = useLocation()
+  useEffect(() => {
+  window.__lenis?.scrollTo(0, { immediate: true })
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'instant',
+  })
+
+  document.documentElement.scrollTop = 0
+  document.body.scrollTop = 0
+}, [location.pathname])
 
   return (
     <AnimatePresence mode="wait">
@@ -82,18 +98,20 @@ function App() {
   useScrollAnimations()
 
   return (
-    <>
-      <Navbar />
-      <AnimatedRoutes />
-      <Footer />
+  <>
+    <BackgroundVideo />
 
-      <PageTransition pathname={location.pathname} />
+    <Navbar />
+    <AnimatedRoutes />
+    <Footer />
 
-      {!introComplete && (
-        <IntroLoader onComplete={handleIntroComplete} />
-      )}
-    </>
-  )
+    <PageTransition pathname={location.pathname} />
+
+    {!introComplete && (
+      <IntroLoader onComplete={handleIntroComplete} />
+    )}
+  </>
+)
 }
 
 export default App

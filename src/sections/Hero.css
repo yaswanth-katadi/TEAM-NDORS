@@ -67,7 +67,7 @@
   flex-direction: column;
   font-family: 'Rajdhani', sans-serif;
   font-size: clamp(58px, 8vw, 112px);
-  font-weight: 800;
+  font-weight: 500;
   font-style: italic;
   line-height: 0.91;
   letter-spacing: -2px;
@@ -100,7 +100,7 @@
   justify-content: center;
   gap: 12px;
   text-decoration: none;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-body);
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 1px;
@@ -114,14 +114,28 @@
 }
 
 .hero-button.primary:hover {
-  background: #e3182b;
+  background: #d51d2d;
+  border-color: #d51d2d;
+  box-shadow: 0 8px 28px rgba(181, 18, 32, 0.24);
   transform: translateY(-3px);
 }
 
+
 .hero-button.secondary {
-  color: white;
-  border: 1px solid rgba(255,255,255,0.55);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
+
+.hero-button.secondary:hover {
+  color: #ffffff;
+  background: rgba(181, 18, 32, 0.18);
+  border-color: rgba(181, 18, 32, 0.8);
+  transform: translateY(-3px);
+}
+
 
 .hero-button.secondary:hover {
   color: #080808;
@@ -286,10 +300,15 @@
   }
 
   .hero-content h1 {
-    font-size: clamp(36px, 10vw, 42px);
-    letter-spacing: -1px;
-  }
-
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 6.5vw, 88px);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+}
   .hero-label {
     font-size: 9px;
     letter-spacing: 1.8px;
