@@ -1,30 +1,24 @@
 
-import { lazy, Suspense, useCallback, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import IntroLoader from './components/animations/IntroLoader'
+import PageTransition from './components/animations/PageTransition'
+import BackgroundVideo from './components/common/BackgroundVideo'
 
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollAnimations from './hooks/useScrollAnimations'
-import PageTransition from './components/animations/PageTransition'
 
 const Home = lazy(() => import('./pages/Home'))
 const Teams = lazy(() => import('./pages/Teams'))
 const Achievements = lazy(() => import('./pages/Achievements'))
 const Alumni = lazy(() => import('./pages/Alumni'))
 
-import { useEffect } from 'react'
-import BackgroundVideo from './components/common/BackgroundVideo'
-import { lazy, Suspense, useCallback, useState, useEffect } from 'react'
-
 const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 18,
-  },
+  initial: { opacity: 0, y: 18 },
   animate: {
     opacity: 1,
     y: 0,
@@ -45,18 +39,19 @@ const pageVariants = {
 
 function AnimatedRoutes() {
   const location = useLocation()
+
   useEffect(() => {
-  window.__lenis?.scrollTo(0, { immediate: true })
+    window.__lenis?.scrollTo(0, { immediate: true })
 
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'instant',
-  })
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant',
+    })
 
-  document.documentElement.scrollTop = 0
-  document.body.scrollTop = 0
-}, [location.pathname])
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
+  }, [location.pathname])
 
   return (
     <AnimatePresence mode="wait">
@@ -67,13 +62,7 @@ function AnimatedRoutes() {
         animate="animate"
         exit="exit"
       >
-        <Suspense
-          fallback={
-            <div className="route-loading">
-              Loading...
-            </div>
-          }
-        >
+        <Suspense fallback={<div className="route-loading">Loading...</div>}>
           <Routes location={location}>
             <Route path="/" element={<Home />} />
             <Route path="/teams" element={<Teams />} />
@@ -98,20 +87,22 @@ function App() {
   useScrollAnimations()
 
   return (
-  <>
-    <BackgroundVideo />
+    <>
+      <BackgroundVideo />
 
-    <Navbar />
-    <AnimatedRoutes />
-    <Footer />
+      <div className="app-content">
+        <Navbar />
+        <AnimatedRoutes />
+        <Footer />
+      </div>
 
-    <PageTransition pathname={location.pathname} />
+      <PageTransition pathname={location.pathname} />
 
-    {!introComplete && (
-      <IntroLoader onComplete={handleIntroComplete} />
-    )}
-  </>
-)
+      {!introComplete && (
+        <IntroLoader onComplete={handleIntroComplete} />
+      )}
+    </>
+  )
 }
 
 export default App
