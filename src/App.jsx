@@ -7,7 +7,6 @@ import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import IntroLoader from './components/animations/IntroLoader'
 import PageTransition from './components/animations/PageTransition'
-import BackgroundVideo from './components/common/BackgroundVideo'
 
 import useSmoothScroll from './hooks/useSmoothScroll'
 import useScrollAnimations from './hooks/useScrollAnimations'
@@ -88,13 +87,9 @@ function App() {
 
   return (
     <>
-      <BackgroundVideo />
-
-      <div className="app-content">
-        <Navbar />
-        <AnimatedRoutes />
-        <Footer />
-      </div>
+      <Navbar />
+      <AnimatedRoutes />
+      <Footer />
 
       <PageTransition pathname={location.pathname} />
 
