@@ -83,52 +83,184 @@ const domains = [
 function Domains() {
   return (
     <main className="domains-page">
+
+      {/* HERO */}
       <section className="domains-hero">
-        <span className="domains-eyebrow">ENGINEERING THE OFF-ROAD MACHINE</span>
-        <h1>OUR <span>DOMAINS</span></h1>
-        <p>
-          Five engineering disciplines. One machine.
-          Discover the teams and systems that bring an NDORS buggy to life.
-        </p>
+        <div className="domains-hero-overlay" />
+
+        <div className="domains-hero-content">
+          <span className="domains-eyebrow">
+            NIT DURGAPUR OFF-ROAD SPORTS
+          </span>
+
+          <h1>
+            BUILT BY
+            <br />
+            <span>ENGINEERS.</span>
+            <br />
+            DRIVEN BY
+            <br />
+            <span>PASSION.</span>
+          </h1>
+
+          <p>
+            Five engineering disciplines. One purpose.
+            Discover the minds and machines behind our
+            off-road engineering journey.
+          </p>
+
+          <a href="#explore-domains" className="domains-hero-button">
+            EXPLORE OUR DOMAINS
+            <span>↘</span>
+          </a>
+        </div>
+
+        <div className="domains-hero-index">
+          <span>NDORS</span>
+          <span>ENGINEERING DIVISION / 2026</span>
+        </div>
+
+        <div className="domains-hero-scroll">
+          <span />
+          SCROLL TO EXPLORE
+        </div>
       </section>
 
-      <section className="domains-content">
-        <div className="domains-intro">
-          <span className="domains-eyebrow">WHAT WE BUILD</span>
-          <h2>Every system has a <span>purpose.</span></h2>
+      {/* DOMAIN INTRO */}
+      <section className="domains-overview" id="explore-domains">
+        <div className="domains-overview-heading">
+          <div>
+            <span className="domains-eyebrow">BEHIND EVERY COMPONENT</span>
+            <h2>
+              ONE MACHINE.
+              <br />
+              <span>FIVE SPECIALITIES.</span>
+            </h2>
+          </div>
+
           <p>
-            From delivering power to maintaining control, each domain
-            contributes to the performance, safety and reliability of our buggy.
+            Every component has a purpose. Every decision affects
+            performance. Meet the engineering teams responsible
+            for bringing our buggy to life.
           </p>
         </div>
 
-        <div className="domains-list">
+        <div className="domains-stat-strip">
+          <div>
+            <strong>05</strong>
+            <span>ENGINEERING DOMAINS</span>
+          </div>
+          <div>
+            <strong>01</strong>
+            <span>COMMON MISSION</span>
+          </div>
+          <div>
+            <strong>∞</strong>
+            <span>WAYS TO INNOVATE</span>
+          </div>
+        </div>
+      </section>
+
+      {/* DOMAIN CARDS */}
+      <section className="domains-showcase">
+        <div className="domains-section-label">
+          <span>01 — 05</span>
+          <span>EXPLORE THE ENGINEERING</span>
+        </div>
+
+        <div className="domains-grid">
           {domains.map((domain, index) => (
             <article
-              className={`domain-card ${index % 2 ? 'domain-reverse' : ''}`}
+              className={`domain-card ${index === 0 ? 'domain-card-featured' : ''}`}
+              id={`domain-${domain.number}`}
               key={domain.number}
             >
-              <div className="domain-image">
-                <img src={domain.image} alt={`${domain.name} engineering`} loading="lazy" />
-                <span>{domain.number}</span>
+              <div className="domain-visual">
+                <img
+                  src={domain.image}
+                  alt={`${domain.name} engineering`}
+                  loading="lazy"
+                />
+
+                <div className="domain-visual-shade" />
+
+                <span className="domain-number">{domain.number}</span>
+
+                <span className="domain-visual-caption">
+                  NDORS / ENGINEERING
+                </span>
+
+                <span className="domain-visual-name">
+                  {domain.name}
+                </span>
               </div>
 
               <div className="domain-info">
-                <span className="domains-eyebrow">{domain.subtitle}</span>
-                <h3>{domain.name}</h3>
-                <p>{domain.description}</p>
+                <span className="domains-eyebrow">
+                  {domain.subtitle}
+                </span>
 
-                <h4>WHAT THE DOMAIN WORKS ON</h4>
-                <ul>
-                  {domain.work.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <h3>{domain.name}</h3>
+
+                <p className="domain-description">
+                  {domain.description}
+                </p>
+
+                {/* TECHNICAL DETAILS — ALWAYS VISIBLE */}
+                <div
+  className="domain-work"
+  id={`domain-work-${domain.number}`}
+>
+  <h4>WHAT WE WORK ON</h4>
+
+  <ul>
+    {domain.work.map((item, workIndex) => (
+      <li key={item}>
+        <span className="work-number">
+          {String(workIndex + 1).padStart(2, '0')}
+        </span>
+
+        <span className="work-text">
+          {item}
+        </span>
+      </li>
+    ))}
+  </ul>
+</div>
               </div>
             </article>
           ))}
         </div>
       </section>
+
+      {/* CLOSING SECTION */}
+      <section className="domains-closing">
+        <div className="domains-closing-content">
+          <span className="domains-eyebrow">
+            THE NDORS ENGINEERING SPIRIT
+          </span>
+
+          <h2>
+            DIFFERENT DOMAINS.
+            <br />
+            <span>ONE MACHINE.</span>
+          </h2>
+
+          <p>
+            From the first design decision to the final test,
+            every domain works together to build something
+            capable of conquering the terrain.
+          </p>
+
+          <a href="/teams" className="domains-closing-link">
+            MEET THE PEOPLE BEHIND IT
+            <span>↗</span>
+          </a>
+        </div>
+
+        <div className="domains-closing-mark">NDORS</div>
+      </section>
+
     </main>
   )
 }

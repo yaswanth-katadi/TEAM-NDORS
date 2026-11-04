@@ -1,218 +1,816 @@
 
+/* =========================================
+   NDORS DOMAINS PAGE
+========================================= */
+
 .domains-page {
   min-height: 100vh;
-  color: #f4f4f4;
+  overflow: hidden;
   background: #080808;
+  color: #f5f2eb;
 }
 
-.domains-hero {
-  min-height: 390px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 110px 8% 70px;
-  background:
-    linear-gradient(90deg, rgba(8,8,8,.96), rgba(8,8,8,.65)),
-    url('../assets/images/hero-buggy.jpg') center 55% / cover;
+.domains-page * {
+  box-sizing: border-box;
 }
 
 .domains-eyebrow {
-  color: #d13a43;
-  font-size: 11px;
+  color: #e0444e;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.domains-hero {
+  min-height: 680px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 150px 9% 100px;
+  isolation: isolate;
+  background:
+    url('../assets/images/hero-buggy.jpg') center 55% / cover no-repeat;
+}
+
+.domains-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 5, 5, 0.97) 0%,
+      rgba(5, 5, 5, 0.78) 48%,
+      rgba(5, 5, 5, 0.15) 100%
+    ),
+    linear-gradient(0deg, #080808 0%, transparent 35%);
+}
+
+.domains-hero-content {
+  width: min(720px, 100%);
+  animation: domains-reveal 0.8s ease both;
+}
+
+.domains-hero h1 {
+  margin: 25px 0;
+  font-family: var(--font-heading);
+  font-size: clamp(54px, 8.5vw, 112px);
+  line-height: 0.91;
+  font-weight: 700;
+  letter-spacing: -3px;
+}
+
+.domains-hero h1 span {
+  color: #c51d2b;
+}
+
+.domains-hero-content > p {
+  max-width: 490px;
+  color: #c5c2bc;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.domains-hero-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 27px;
+  padding: 16px 21px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  transition: 0.3s ease;
+}
+
+.domains-hero-button span {
+  color: #e0444e;
+  font-size: 19px;
+}
+
+.domains-hero-button:hover {
+  background: #bd1c29;
+  border-color: #bd1c29;
+  transform: translateY(-3px);
+}
+
+.domains-hero-button:hover span {
+  color: white;
+}
+
+.domains-hero-index {
+  position: absolute;
+  right: 8%;
+  bottom: 43px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+  color: #aaa;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.domains-hero-index span:first-child {
+  color: #fff;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.domains-hero-scroll {
+  position: absolute;
+  bottom: 43px;
+  left: 9%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #aaa;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.domains-hero-scroll span {
+  width: 35px;
+  height: 1px;
+  background: #c51d2b;
+}
+
+/* =========================================
+   OVERVIEW SECTION
+========================================= */
+
+.domains-overview {
+  width: min(1200px, 86%);
+  margin: auto;
+  padding: 115px 0 65px;
+}
+
+.domains-overview-heading {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: end;
+  gap: 70px;
+}
+
+.domains-overview-heading h2,
+.domains-closing h2 {
+  margin: 18px 0 0;
+  font-family: var(--font-heading);
+  font-size: clamp(37px, 5.6vw, 68px);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+}
+
+.domains-overview-heading h2 span,
+.domains-closing h2 span {
+  color: #bd1c29;
+}
+
+.domains-overview-heading > p {
+  max-width: 450px;
+  margin: 0 0 6px;
+  color: #aaa;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.domains-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 65px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.domains-stat-strip > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.domains-stat-strip > div:first-child {
+  padding-left: 0;
+}
+
+.domains-stat-strip > div:last-child {
+  border-right: 0;
+}
+
+.domains-stat-strip strong {
+  font-family: var(--font-heading);
+  font-size: 34px;
+  color: #f5f2eb;
+}
+
+.domains-stat-strip span {
+  color: #888;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+/* =========================================
+   DOMAIN SHOWCASE
+========================================= */
+
+.domains-showcase {
+  width: min(1250px, 88%);
+  margin: auto;
+  padding: 45px 0 130px;
+}
+
+.domains-section-label {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  margin-bottom: 35px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  color: #888;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 2px;
 }
 
-.domains-hero h1 {
-  margin: 17px 0;
+.domains-section-label span:first-child {
+  color: #e0444e;
+}
+
+/* Vertical layout */
+
+.domains-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+}
+
+/* Individual domain cards */
+
+.domain-card,
+.domain-card-featured {
+  width: 100%;
+  min-width: 0;
+  min-height: 390px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  overflow: hidden;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #171719, #0d0d0f);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    border-color 0.4s ease,
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.domain-card:hover {
+  border-color: rgba(227, 24, 43, 0.55);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+}
+
+/* Alternate image and information positions */
+
+.domain-card:nth-child(even) .domain-visual {
+  order: 2;
+}
+
+.domain-card:nth-child(even) .domain-info {
+  order: 1;
+}
+
+/* Domain images */
+
+.domain-visual,
+.domain-card-featured .domain-visual {
+  position: relative;
+  min-width: 0;
+  min-height: 390px;
+  overflow: hidden;
+  background: #222;
+}
+
+.domain-visual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.domain-card:hover .domain-visual img {
+  transform: scale(1.055);
+}
+
+.domain-visual-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.82),
+    transparent 65%
+  );
+}
+
+.domain-number {
+  position: absolute;
+  top: 22px;
+  left: 23px;
+  z-index: 1;
+  color: white;
   font-family: var(--font-heading);
-  font-size: clamp(48px, 8vw, 86px);
-  line-height: 1;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.domain-visual-caption {
+  position: absolute;
+  bottom: 78px;
+  left: 25px;
+  color: #ddd;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.domain-visual-name {
+  position: absolute;
+  bottom: 24px;
+  left: 23px;
+  color: white;
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.5vw, 43px);
   font-weight: 600;
+  text-transform: uppercase;
 }
 
-.domains-hero h1 span,
-.domains-intro h2 span {
-  color: #b51220;
+/* Domain information */
+
+.domain-info,
+.domain-card-featured .domain-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 0;
+  padding: clamp(28px, 5vw, 65px);
 }
 
-.domains-hero p {
-  max-width: 560px;
-  color: #c4c4c4;
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.domains-content {
-  width: min(1180px, 88%);
-  margin: auto;
-  padding: 85px 0 110px;
-}
-
-.domains-intro {
-  max-width: 650px;
-  margin-bottom: 55px;
-}
-
-.domains-intro h2 {
-  margin: 14px 0;
+.domain-info h3 {
+  margin: 16px 0;
   font-family: var(--font-heading);
-  font-size: clamp(30px, 5vw, 48px);
-  font-weight: 500;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.05;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
-.domains-intro p {
-  color: #aaa;
+.domain-description {
+  width: 100%;
+  max-width: 480px;
+  min-height: 0;
+  margin: 0;
+  color: #b8b8b8;
   font-size: 14px;
   line-height: 1.9;
 }
 
-.domains-list {
+/* =========================================
+   TECHNICAL DETAILS
+   ALWAYS VISIBLE — NO EXPAND/COLLAPSE
+========================================= */
+
+.domain-work {
+  width: 100%;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.domain-work h4 {
+  margin: 10px 0 17px;
+  color: #e0444e;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.domain-work ul {
   display: flex;
   flex-direction: column;
-  gap: 35px;
-}
-
-.domain-card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 340px;
-  overflow: hidden;
-  background: #151518;
-  border: 1px solid rgba(255,255,255,.09);
-  border-radius: 12px;
-}
-
-.domain-card.domain-reverse .domain-image {
-  order: 2;
-}
-
-.domain-image {
-  position: relative;
-  min-height: 340px;
-  overflow: hidden;
-  background: #242428;
-}
-
-.domain-image img {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-  object-fit: cover;
-  transition: transform .7s ease;
-}
-
-.domain-card:hover .domain-image img {
-  transform: scale(1.05);
-}
-
-.domain-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(0deg, rgba(0,0,0,.35), transparent 65%);
-}
-
-.domain-image > span {
-  position: absolute;
-  z-index: 1;
-  left: 24px;
-  bottom: 20px;
-  color: white;
-  font-size: 28px;
-  font-weight: 600;
-}
-
-.domain-info {
-  align-self: center;
-  padding: 38px clamp(24px, 4vw, 52px);
-}
-
-.domain-info h3 {
-  margin: 12px 0;
-  font-family: var(--font-heading);
-  font-size: clamp(27px, 3vw, 38px);
-  font-weight: 500;
-}
-
-.domain-info > p {
-  color: #b8b8bc;
-  font-size: 13px;
-  line-height: 1.9;
-}
-
-.domain-info h4 {
-  margin: 24px 0 13px;
-  color: #e35b65;
-  font-size: 10px;
-  letter-spacing: 1.5px;
-}
-
-.domain-info ul {
-  display: grid;
-  gap: 10px;
+  gap: 15px;
   padding: 0;
+  margin: 0;
   list-style: none;
 }
 
-.domain-info li {
-  position: relative;
-  padding-left: 17px;
-  color: #d0d0d0;
-  font-size: 12px;
-  line-height: 1.6;
+.domain-work li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: baseline;
+  width: 100%;
+  color: #ccc;
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: normal;
+  word-spacing: normal;
 }
 
-.domain-info li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #b51220;
+.domain-work .work-number {
+  display: inline-block;
+  min-width: 28px;
+  color: #e0444e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: normal;
+  white-space: nowrap;
 }
+
+.domain-work .work-text {
+  display: inline;
+  min-width: 0;
+  color: #ccc;
+  letter-spacing: normal;
+  word-spacing: normal;
+}
+
+/* =========================================
+   CLOSING SECTION
+========================================= */
+
+.domains-closing {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 460px;
+  overflow: hidden;
+  padding: 90px 9%;
+  background:
+    linear-gradient(
+      90deg,
+      #10090a 0%,
+      rgba(16, 9, 10, 0.94) 55%,
+      rgba(16, 9, 10, 0.65)
+    ),
+    url('../assets/images/hero-buggy.jpg') center 60% / cover no-repeat;
+}
+
+.domains-closing-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.domains-closing h2 {
+  margin: 20px 0;
+  font-size: clamp(42px, 6vw, 76px);
+}
+
+.domains-closing-content > p {
+  max-width: 510px;
+  color: #bbb;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.domains-closing-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  margin-top: 22px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c51d2b;
+  color: white;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  transition: color 0.3s ease;
+}
+
+.domains-closing-link span {
+  color: #e0444e;
+  font-size: 18px;
+}
+
+.domains-closing-link:hover {
+  color: #e0444e;
+}
+
+.domains-closing-mark {
+  position: absolute;
+  right: -20px;
+  bottom: -70px;
+  color: rgba(255, 255, 255, 0.035);
+  font-family: var(--font-heading);
+  font-size: clamp(100px, 19vw, 260px);
+  font-weight: 900;
+  pointer-events: none;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes domains-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   TABLET RESPONSIVENESS
+========================================= */
+
+@media (max-width: 900px) {
+  .domains-hero {
+    min-height: 600px;
+  }
+
+  .domains-overview {
+    width: 90%;
+  }
+
+  .domains-showcase {
+    width: 90%;
+  }
+
+  .domains-overview-heading {
+    gap: 35px;
+  }
+
+  .domain-card,
+  .domain-card-featured {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .domain-visual,
+  .domain-card-featured .domain-visual {
+    min-height: 400px;
+  }
+
+  .domain-info,
+  .domain-card-featured .domain-info {
+    padding: 30px;
+  }
+
+  .domain-info h3 {
+    font-size: clamp(28px, 3.5vw, 40px);
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
 
 @media (max-width: 760px) {
-  .domains-hero {
-    min-height: 330px;
-    padding: 100px 7% 55px;
+  .domains-grid {
+    gap: 25px;
   }
 
-  .domains-content {
-    width: 90%;
-    padding: 65px 0 80px;
+  .domain-card,
+  .domain-card-featured {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
   }
 
-  .domains-list {
-    gap: 24px;
+  /* Reset alternating layout on mobile */
+
+  .domain-card:nth-child(even) .domain-visual,
+  .domain-card:nth-child(even) .domain-info {
+    order: initial;
   }
 
-  .domain-card {
-    grid-template-columns: 1fr;
+  .domain-visual,
+  .domain-card-featured .domain-visual {
+    width: 100%;
+    min-height: 250px;
+    height: 250px;
   }
 
-  .domain-card.domain-reverse .domain-image {
-    order: 0;
+  .domain-visual img {
+    min-height: 250px;
   }
 
-  .domain-image {
-    min-height: 230px;
+  .domain-info,
+  .domain-card-featured .domain-info {
+    width: 100%;
+    padding: 28px 24px;
   }
 
-  .domain-info {
-    padding: 27px 23px 30px;
+  .domain-info h3 {
+    font-size: 34px;
   }
-}
 
-@media (max-width: 420px) {
-  .domains-hero p {
+  .domain-description {
     font-size: 13px;
   }
 
-  .domain-image {
-    min-height: 200px;
+  .domain-work {
+    margin-top: 20px;
+    padding-top: 18px;
+  }
+
+  .domain-work ul {
+    gap: 13px;
+  }
+
+  .domain-work li {
+    font-size: 12px;
+  }
+
+  .domains-showcase {
+    width: 90%;
+    padding-bottom: 80px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE SCREENS
+========================================= */
+
+@media (max-width: 650px) {
+  .domains-hero {
+    min-height: 600px;
+    padding: 130px 7% 100px;
+    background-position: 62% center;
+  }
+
+  .domains-hero-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(5, 5, 5, 0.92),
+        rgba(5, 5, 5, 0.55)
+      ),
+      linear-gradient(0deg, #080808 0%, transparent 45%);
+  }
+
+  .domains-hero h1 {
+    font-size: clamp(48px, 12vw, 76px);
+    letter-spacing: -1.5px;
+  }
+
+  .domains-hero-content > p {
+    max-width: 360px;
+    font-size: 13px;
+  }
+
+  .domains-hero-index {
+    right: 7%;
+    bottom: 28px;
+  }
+
+  .domains-hero-scroll {
+    left: 7%;
+    bottom: 34px;
+    font-size: 8px;
+  }
+
+  .domains-overview {
+    width: 88%;
+    padding: 75px 0 45px;
+  }
+
+  .domains-overview-heading {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .domains-overview-heading h2 {
+    font-size: clamp(37px, 10vw, 54px);
+  }
+
+  .domains-overview-heading > p {
+    font-size: 13px;
+  }
+
+  .domains-stat-strip {
+    margin-top: 38px;
+  }
+
+  .domains-stat-strip > div {
+    padding: 17px 10px;
+  }
+
+  .domains-stat-strip > div:first-child {
+    padding-left: 0;
+  }
+
+  .domains-stat-strip strong {
+    font-size: 27px;
+  }
+
+  .domains-stat-strip span {
+    font-size: 7px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+  }
+
+  .domains-showcase {
+    width: 88%;
+    padding: 25px 0 75px;
+  }
+
+  .domains-section-label {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .domains-closing {
+    min-height: 430px;
+    padding: 75px 7%;
+    background-position: 60% center;
+  }
+
+  .domains-closing h2 {
+    font-size: clamp(40px, 10vw, 60px);
+  }
+
+  .domains-closing-content > p {
+    font-size: 13px;
+  }
+
+  .domains-closing-mark {
+    font-size: 120px;
+    bottom: -30px;
+  }
+}
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+  .domains-hero h1 {
+    font-size: 45px;
+  }
+
+  .domains-hero-index {
+    display: none;
+  }
+
+  .domains-stat-strip span {
+    font-size: 6px;
+  }
+
+  .domains-section-label {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+  }
+
+  .domain-info,
+  .domain-card-featured .domain-info {
+    padding: 23px 18px;
+  }
+
+  .domain-info h3 {
+    font-size: 29px;
+  }
+
+  .domain-visual,
+  .domain-card-featured .domain-visual {
+    height: 215px;
+    min-height: 215px;
+  }
+
+  .domain-visual img {
+    min-height: 215px;
+  }
+
+  .domain-visual-name {
+    font-size: 29px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .domains-page *,
+  .domains-page *::before,
+  .domains-page *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
