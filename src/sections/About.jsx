@@ -1,5 +1,6 @@
 
 import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import './About.css'
 
 function About() {
@@ -43,10 +44,10 @@ function About() {
             beyond limits.
           </p>
 
-          <a href="/teams" className="about-link">
+          <Link to="/teams" className="about-link">
             GET TO KNOW OUR TEAM
             <ArrowUpRight size={19} />
-          </a>
+          </Link>
         </div>
       </div>
 
