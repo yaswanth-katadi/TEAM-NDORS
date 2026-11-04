@@ -1,4 +1,8 @@
 
+/* =========================================
+   HERO SECTION
+========================================= */
+
 .hero {
   position: relative;
   min-height: calc(100vh - 88px);
@@ -9,6 +13,8 @@
   background: #080808;
   color: #fff;
 }
+
+/* Background image */
 
 .hero-image {
   position: absolute;
@@ -23,20 +29,28 @@
   filter: brightness(0.78) contrast(1.12) saturate(0.8);
 }
 
+/* Image overlay */
+
 .hero-shade {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg,
+    linear-gradient(
+      90deg,
       #080808 0%,
       rgba(8, 8, 8, 0.94) 24%,
       rgba(8, 8, 8, 0.65) 48%,
-      rgba(8, 8, 8, 0.08) 100%),
-    linear-gradient(0deg,
+      rgba(8, 8, 8, 0.08) 100%
+    ),
+    linear-gradient(
+      0deg,
       #080808 0%,
       transparent 30%,
-      rgba(8, 8, 8, 0.08) 100%);
+      rgba(8, 8, 8, 0.08) 100%
+    );
 }
+
+/* Hero content */
 
 .hero-content {
   position: relative;
@@ -44,6 +58,8 @@
   width: min(760px, 90%);
   padding: 100px 0 130px 7%;
 }
+
+/* Hero label */
 
 .hero-label {
   display: flex;
@@ -62,6 +78,8 @@
   background: #e3182b;
 }
 
+/* Hero heading */
+
 .hero-content h1 {
   display: flex;
   flex-direction: column;
@@ -77,6 +95,8 @@
   color: #e3182b;
 }
 
+/* Description */
+
 .hero-description {
   max-width: 440px;
   margin-top: 30px;
@@ -84,6 +104,10 @@
   font-size: 16px;
   line-height: 1.8;
 }
+
+/* =========================================
+   GLASSMORPHISM PILL BUTTONS
+========================================= */
 
 .hero-buttons {
   display: flex;
@@ -93,49 +117,123 @@
 }
 
 .hero-button {
-  min-height: 50px;
-  padding: 0 23px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  min-height: 54px;
+  padding: 0 28px;
+  border-radius: 999px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
+
+  color: #fff;
   text-decoration: none;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   letter-spacing: 1px;
-  transition: 0.3s ease;
+
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    0 6px 24px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
+
+/* Sliding red glass layer */
+
+.hero-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+
+  background: linear-gradient(
+    120deg,
+    rgba(227, 24, 43, 0.95),
+    rgba(181, 18, 32, 0.85)
+  );
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition:
+    transform 0.45s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Hover animation */
+
+.hero-button:hover::before {
+  transform: scaleX(1);
+}
+
+.hero-button:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.65);
+  transform: translateY(-3px);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.25),
+    0 8px 30px rgba(181, 18, 32, 0.28);
+}
+
+/* Primary button */
 
 .hero-button.primary {
-  background: #b51220;
-  color: white;
-  border: 1px solid #b51220;
+  background: rgba(181, 18, 32, 0.28);
+  border-color: rgba(227, 24, 43, 0.65);
 }
 
-.hero-button.primary:hover {
-  background: #d51d2d;
-  border-color: #d51d2d;
-  box-shadow: 0 8px 28px rgba(181, 18, 32, 0.24);
-  transform: translateY(-3px);
+.hero-button.primary::before {
+  background: linear-gradient(
+    120deg,
+    #e3182b,
+    #a90f1c
+  );
 }
 
+/* Secondary button */
 
 .hero-button.secondary {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.065);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
-.hero-button.secondary:hover {
-  color: #ffffff;
-  background: rgba(181, 18, 32, 0.18);
-  border-color: rgba(181, 18, 32, 0.8);
-  transform: translateY(-3px);
+/* Arrow animation */
+
+.hero-button svg {
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
 }
 
+.hero-button:hover svg {
+  transform: translateX(5px);
+}
+
+/* Keyboard accessibility */
+
+.hero-button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 5px;
+}
+
+/* =========================================
+   HERO BOTTOM BAR
+========================================= */
 
 .hero-bottom {
   position: absolute;
@@ -168,6 +266,10 @@
   color: #e3182b;
 }
 
+/* =========================================
+   TABLET AND MOBILE
+========================================= */
+
 @media (max-width: 768px) {
   .hero {
     min-height: calc(100svh - 72px);
@@ -179,61 +281,21 @@
 
   .hero-shade {
     background:
-      linear-gradient(90deg,
+      linear-gradient(
+        90deg,
         rgba(8,8,8,0.94),
-        rgba(8,8,8,0.5)),
-      linear-gradient(0deg, #080808, transparent 65%);
+        rgba(8,8,8,0.5)
+      ),
+      linear-gradient(
+        0deg,
+        #080808,
+        transparent 65%
+      );
   }
 
   .hero-content {
-    padding: 80px 6% 110px;
-  }
-
-  .hero-content h1 {
-    font-size: clamp(48px, 11vw, 76px);
-  }
-
-  .hero-description {
-    font-size: 14px;
-  }
-
-  .hero-bottom {
-    padding: 0 5%;
-    font-size: 8px;
-  }
-
-  .hero-bottom > span:last-child {
-    display: none;
-  }
-}
-
-@media (max-width: 420px) {
-  .hero-buttons {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .hero-button {
-    width: 100%;
-  }
-
-  .hero-content h1 {
-    font-size: 46px;
-  }
-}
-
-
-/* MOBILE RESPONSIVENESS IMPROVEMENTS */
-
-@media (max-width: 768px) {
-  .hero {
-    width: 100%;
-    min-height: calc(100svh - 72px);
-  }
-
-  .hero-content {
-    width: 100%;
     padding: 65px 24px 105px;
+    width: 100%;
   }
 
   .hero-label {
@@ -286,6 +348,27 @@
     font-size: 8px;
     letter-spacing: 1.2px;
   }
+
+  .hero-bottom > span:last-child {
+    display: none;
+  }
+}
+
+/* Small mobile screens */
+
+@media (max-width: 420px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-button {
+    width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 46px;
+  }
 }
 
 @media (max-width: 380px) {
@@ -295,15 +378,16 @@
   }
 
   .hero-content h1 {
-  display: flex;
-  flex-direction: column;
-  font-family: var(--font-heading);
-  font-size: clamp(48px, 6.5vw, 88px);
-  font-weight: 700;
-  font-style: normal;
-  line-height: 1.04;
-  letter-spacing: -0.055em;
-}
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-heading);
+    font-size: clamp(48px, 6.5vw, 88px);
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.04;
+    letter-spacing: -0.055em;
+  }
+
   .hero-label {
     font-size: 9px;
     letter-spacing: 1.8px;
@@ -316,5 +400,17 @@
   .hero-bottom {
     padding: 0 14px;
     font-size: 7px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-button,
+  .hero-button::before,
+  .hero-button svg {
+    transition: none;
   }
 }
