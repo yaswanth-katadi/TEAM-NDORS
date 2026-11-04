@@ -2,6 +2,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ArrowLeft, ArrowRight, UserRound } from 'lucide-react'
 import './Teams.css'
+import adityaPhoto from '../assets/images/teams/member-aditya-bhat.jpg'
+import aradhyPhoto from '../assets/images/teams/member-aradhy-soni.jpg'
+import armanPhoto from '../assets/images/teams/member-arman-sahoo.jpg'
+import charanPhoto from '../assets/images/teams/charan-rollcage.png';
+import digantaPhoto from '../assets/images/teams/member-diganta-kar.jpg'
+import jeevanPhoto from '../assets/images/teams/member-jeevan-polamarasetty.jpg'
+import pratyakshPhoto from '../assets/images/teams/member-pratyaksh-raj.jpg'
+import shreyaPhoto from '../assets/images/teams/member-shreya-keshri.jpg'
+import shrutiPhoto from '../assets/images/teams/member-shruti-nath.jpg'
+import sohamPhoto from '../assets/images/teams/member-soham-rana.jpg'
+import sreejanPhoto from '../assets/images/teams/member-sreejan-paul.jpg'
 
 const facultyAdvisors = [
   {
@@ -43,19 +54,19 @@ const membersByYear = [
     year: 'SECOND YEAR',
     subtitle: 'The newest members of NDORS',
     members: [
-      { name: 'Aditya S Bhat' },
-      { name: 'Aradhy Soni' },
-      { name: 'Arman Sahoo' },
-      { name: 'Charan Gandaboina' },
-      { name: 'Diganta Kar' },
-      { name: 'Jeevan Polamarasetty' },
-      { name: 'Mehuli Maity' },
-      { name: 'Nambada Sai Vignesh' },
-      { name: 'Pratyaksh Raj' },
-      { name: 'Shreya Keshri' },
-      { name: 'Shruti Nath' },
-      { name: 'Soham Rana' },
-      { name: 'Sreejan Paul' },
+      { name: 'Aditya S Bhat', domain: 'POWERTRAIN', image: adityaPhoto },
+      { name: 'Aradhy Soni', domain: 'STEERING', image: aradhyPhoto },
+      { name: 'Arman Sahoo', domain: 'BRAKES', image: armanPhoto },
+      { name: 'Charan Gandaboina', domain: 'ROLL CAGE', image: charanPhoto },
+      { name: 'Diganta Kar', domain: 'SUSPENSION', image: digantaPhoto },
+      { name: 'Jeevan Polamarasetty', domain: 'POWERTRAIN', image: jeevanPhoto },
+      { name: 'Mehuli Maity', domain: 'DOMAIN DETAILS PENDING' },
+      { name: 'Nambada Sai Vignesh', domain: 'DOMAIN DETAILS PENDING' },
+      { name: 'Pratyaksh Raj', domain: 'POWERTRAIN', image: pratyakshPhoto },
+      { name: 'Shreya Keshri', domain: 'BRAKES & SAFETY', image: shreyaPhoto },
+      { name: 'Shruti Nath', domain: 'ROLL CAGE', image: shrutiPhoto },
+      { name: 'Soham Rana', domain: 'ROLL CAGE', image: sohamPhoto },
+      { name: 'Sreejan Paul', domain: 'SUSPENSION', image: sreejanPhoto },
     ],
   },
 ]
@@ -247,17 +258,20 @@ function YearCarousel({ year, subtitle, members }) {
                 }}
                 aria-label={`${member.name}, ${year}`}
               >
-                <div className="member-photo">
-                  <UserRound size={76} strokeWidth={1} />
-                  <span className="member-photo-year">{year}</span>
-                </div>
+                <div className={`member-photo ${member.image ? 'has-photo' : ''}`}>
+  {member.image ? (
+    <img src={member.image} alt={member.name} />
+  ) : (
+    <UserRound size={76} strokeWidth={1} />
+  )}
+</div>
 
                 <div className="member-details">
                   {member.role && (
                     <span className="member-role">{member.role}</span>
                   )}
                   <h3>{member.name}</h3>
-                  <p>TEAM NDORS</p>
+                  <p>{member.domain || 'TEAM NDORS'}</p>
                 </div>
               </article>
             )

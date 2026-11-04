@@ -1,6 +1,6 @@
 
 import { useLayoutEffect, useRef } from 'react'
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { ArrowDown } from 'lucide-react'
 import { gsap } from 'gsap'
 
 import './Achievements.css'
@@ -205,10 +205,6 @@ function Achievements() {
                   {item.number}
                 </span>
 
-                <ArrowUpRight
-                  className="achievement-arrow"
-                  size={24}
-                />
               </div>
 
               <div className="achievement-card-content">

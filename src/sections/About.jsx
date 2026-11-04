@@ -30,9 +30,9 @@ function About() {
           </p>
 
           <p>
-            Team NDORS is the off-road racing team of
-            NIT Durgapur. We bring together students
-            driven by a shared interest in engineering,
+            NIT Durgapur Off-Road Sports (NDORS) brings
+            together students driven by a shared interest
+            in engineering,
             innovation and building competitive
             off-road vehicles.
           </p>

@@ -42,7 +42,7 @@ function PageTransition({ pathname }) {
       <div className="page-transition-line" />
       <div className="page-transition-glow" />
       <div className="page-transition-label">
-        TEAM NDORS <span>///</span> NIT DURGAPUR
+        NIT DURGAPUR OFF-ROAD SPORTS <span>///</span> NDORS
       </div>
     </motion.div>
   )

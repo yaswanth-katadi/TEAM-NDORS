@@ -196,17 +196,6 @@
   font-weight: 700;
 }
 
-.achievement-arrow {
-  position: absolute;
-  right: 17px;
-  bottom: 17px;
-  color: #fff;
-  background: #b51220;
-  padding: 8px;
-  width: 42px;
-  height: 42px;
-}
-
 .achievement-card-content {
   padding: 27px 23px 30px;
 }
