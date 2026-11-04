@@ -1,177 +1,277 @@
-
-import { useLayoutEffect, useRef } from 'react'
-import { ArrowUpRight } from 'lucide-react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
+import { useEffect, useMemo, useState } from 'react'
+import {
+  UserRound,
+  Search,
+  X,
+  GraduationCap,
+  ArrowUpRight,
+} from 'lucide-react'
 import './Alumni.css'
 
-gsap.registerPlugin(ScrollTrigger)
-
-const images = Object.entries(
-  import.meta.glob('../assets/images/alumni/*.{jpg,jpeg,png,webp}', {
-    eager: true,
-    query: '?url',
-    import: 'default',
-  })
-).map(([path, src], index) => ({
-  id: index,
-  src,
-  name: path
-    .split('/')
-    .pop()
-    .replace(/\.[^/.]+$/, '')
-    .replace(/[-_]/g, ' '),
-}))
+const alumniBatches = [
+  {
+    batch: '2025',
+    members: Array.from({ length: 6 }, (_, index) => ({
+      id: `2025-${index + 1}`,
+      name: `Alumni Member ${String(index + 1).padStart(2, '0')}`,
+      role: 'FORMER TEAM MEMBER',
+      department: 'Mechanical Engineering',
+      batch: '2025',
+    })),
+  },
+  {
+    batch: '2024',
+    members: Array.from({ length: 6 }, (_, index) => ({
+      id: `2024-${index + 1}`,
+      name: `Alumni Member ${String(index + 1).padStart(2, '0')}`,
+      role: 'FORMER TEAM MEMBER',
+      department: 'Mechanical Engineering',
+      batch: '2024',
+    })),
+  },
+  {
+    batch: '2023',
+    members: Array.from({ length: 6 }, (_, index) => ({
+      id: `2023-${index + 1}`,
+      name: `Alumni Member ${String(index + 1).padStart(2, '0')}`,
+      role: 'FORMER TEAM MEMBER',
+      department: 'Mechanical Engineering',
+      batch: '2023',
+    })),
+  },
+]
 
 function Alumni() {
-  const pageRef = useRef(null)
+  const [selectedBatch, setSelectedBatch] = useState('ALL')
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedAlumni, setSelectedAlumni] = useState(null)
 
-  useLayoutEffect(() => {
-    const context = gsap.context(() => {
-      // Hero entrance
-      gsap.timeline({
-        defaults: { ease: 'power3.out' },
-      })
-        .from('.alumni-hero-content .section-label', {
-          y: 20,
-          opacity: 0,
-          duration: 0.6,
-        })
-        .from('.alumni-hero-content h1', {
-          y: 55,
-          opacity: 0,
-          duration: 0.9,
-        }, '-=0.3')
-        .from('.alumni-hero-content p', {
-          y: 20,
-          opacity: 0,
-          duration: 0.6,
-        }, '-=0.4')
+  const allAlumni = useMemo(
+    () => alumniBatches.flatMap((group) => group.members),
+    [],
+  )
 
-      // Introduction reveal
-      gsap.from('.alumni-intro > *', {
-        y: 35,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.alumni-intro',
-          start: 'top 85%',
-          once: true,
-        },
-      })
+  const filteredAlumni = useMemo(() => {
+    return allAlumni.filter((member) => {
+      const matchesBatch =
+        selectedBatch === 'ALL' || member.batch === selectedBatch
 
-      // Gallery heading reveal
-      gsap.from('.alumni-gallery-heading', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.alumni-gallery-heading',
-          start: 'top 90%',
-          once: true,
-        },
-      })
+      const matchesSearch =
+        member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        member.batch.includes(searchTerm)
 
-      // Gallery images reveal
-      const cards = gsap.utils.toArray('.alumni-photo-card')
+      return matchesBatch && matchesSearch
+    })
+  }, [allAlumni, selectedBatch, searchTerm])
 
-      if (cards.length > 0) {
-        gsap.from(cards, {
-          y: 45,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.12,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.alumni-gallery',
-            start: 'top 85%',
-            once: true,
-          },
-        })
-      }
-    }, pageRef)
+  useEffect(() => {
+    if (!selectedAlumni) return undefined
 
-    return () => context.revert()
-  }, [])
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') setSelectedAlumni(null)
+    }
+
+    window.addEventListener('keydown', handleEscape)
+
+    return () => window.removeEventListener('keydown', handleEscape)
+  }, [selectedAlumni])
 
   return (
-    <main className="alumni-page" ref={pageRef}>
+    <main className="alumni-page">
       <section className="alumni-hero">
-        <div className="alumni-hero-overlay" />
-
         <div className="alumni-hero-content">
-          <span className="section-label">THE NDORS FAMILY</span>
+          <span className="alumni-eyebrow">
+            THE LEGACY BEHIND NDORS
+          </span>
 
           <h1>
-            THE LEGACY
-            <br />
-            CONTINUES<span>.</span>
+            OUR <span>ALUMNI</span>
           </h1>
 
-          <p>Different generations. One NDORS family.</p>
-        </div>
-      </section>
-
-      <section className="alumni-intro">
-        <span className="section-label">BEYOND THE FINISH LINE</span>
-
-        <h2>
-          MEMORIES THAT
-          <br />
-          STAY WITH US<span>.</span>
-        </h2>
-
-        <p>
-          Every photograph tells a story of teamwork, engineering,
-          challenges and friendships that make NDORS what it is.
-        </p>
-      </section>
-
-      <section className="alumni-gallery-section">
-        <div className="alumni-gallery-heading">
-          <div>
-            <span className="section-label">OUR JOURNEY</span>
-            <h2>THE PEOPLE. THE MOMENTS.</h2>
-          </div>
-
-          <span className="alumni-photo-count">
-            {String(images.length).padStart(2, '0')} PHOTOS
-          </span>
-        </div>
-
-        {images.length > 0 ? (
-          <div className="alumni-gallery">
-            {images.map((photo, index) => (
-              <article
-                className={`alumni-photo-card ${
-                  index % 5 === 0 ? 'photo-large' : ''
-                }`}
-                key={photo.src}
-              >
-                <img
-                src={photo.src}
-                alt={`NDORS memory: ${photo.name}`}
-                loading="lazy"
-                decoding="async"
-               />
-
-                <div className="alumni-photo-overlay">
-                  <span>{photo.name}</span>
-                  <ArrowUpRight size={20} />
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <p className="alumni-empty">
-            Photos will appear here once they are added to the alumni folder.
+          <p>
+            The journey doesn't end when the chapter closes.
+            Meet the people who helped build NDORS and carry
+            its legacy forward.
           </p>
-        )}
+        </div>
       </section>
+
+      <div className="alumni-content">
+        <section className="alumni-intro">
+          <div className="alumni-section-heading">
+            <span className="alumni-eyebrow">ONE TEAM. MANY GENERATIONS.</span>
+            <h2>Beyond <span>Graduation</span></h2>
+            <p>
+              Every generation leaves something behind.
+              The knowledge, experience and memories continue
+              to shape the team.
+            </p>
+          </div>
+
+          <div className="alumni-stats">
+            <div className="alumni-stat">
+              <GraduationCap size={25} />
+              <strong>{alumniBatches.length}</strong>
+              <span>GENERATIONS</span>
+            </div>
+
+            <div className="alumni-stat">
+              <UserRound size={25} />
+              <strong>{allAlumni.length}</strong>
+              <span>PROFILE PLACEHOLDERS</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="alumni-directory">
+          <div className="alumni-directory-heading">
+            <div>
+              <span className="alumni-eyebrow">THE NDORS FAMILY</span>
+              <h2>Alumni <span>Directory</span></h2>
+              <p>Explore members from different graduating batches.</p>
+            </div>
+
+            <span className="alumni-results-count">
+              {String(filteredAlumni.length).padStart(2, '0')} PROFILES
+            </span>
+          </div>
+
+          <div className="alumni-controls">
+            <div className="alumni-batch-filters">
+              <button
+                className={selectedBatch === 'ALL' ? 'active' : ''}
+                onClick={() => setSelectedBatch('ALL')}
+              >
+                ALL BATCHES
+              </button>
+
+              {alumniBatches.map((group) => (
+                <button
+                  key={group.batch}
+                  className={selectedBatch === group.batch ? 'active' : ''}
+                  onClick={() => setSelectedBatch(group.batch)}
+                >
+                  {group.batch}
+                </button>
+              ))}
+            </div>
+
+            <label className="alumni-search">
+              <Search size={18} />
+              <input
+                type="search"
+                placeholder="Search alumni..."
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+              />
+            </label>
+          </div>
+
+          {filteredAlumni.length > 0 ? (
+            <div className="alumni-grid">
+              {filteredAlumni.map((member, index) => (
+                <button
+                  className="alumni-card"
+                  key={member.id}
+                  onClick={() => setSelectedAlumni(member)}
+                  style={{ animationDelay: `${index * 45}ms` }}
+                >
+                  <div className="alumni-card-top">
+                    <div className="alumni-avatar">
+                      <UserRound size={48} strokeWidth={1.1} />
+                    </div>
+
+                    <span className="alumni-card-batch">
+                      BATCH {member.batch}
+                    </span>
+                  </div>
+
+                  <div className="alumni-card-details">
+                    <span className="alumni-card-role">{member.role}</span>
+                    <h3>{member.name}</h3>
+                    <p>{member.department}</p>
+                  </div>
+
+                  <div className="alumni-card-footer">
+                    <span>VIEW PROFILE</span>
+                    <ArrowUpRight size={18} />
+                  </div>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="alumni-empty">
+              <Search size={30} />
+              <h3>No alumni found</h3>
+              <p>Try another name or select a different batch.</p>
+              <button
+                onClick={() => {
+                  setSearchTerm('')
+                  setSelectedBatch('ALL')
+                }}
+              >
+                CLEAR FILTERS
+              </button>
+            </div>
+          )}
+        </section>
+
+        <section className="alumni-legacy">
+          <span className="alumni-eyebrow">BUILT BY MANY. CARRIED BY ALL.</span>
+          <h2>The legacy <span>continues.</span></h2>
+          <p>
+            From the first idea to every machine built after it,
+            every member is part of the NDORS story.
+          </p>
+        </section>
+      </div>
+
+      {selectedAlumni && (
+        <div
+          className="alumni-modal-backdrop"
+          onClick={() => setSelectedAlumni(null)}
+          role="presentation"
+        >
+          <section
+            className="alumni-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="alumni-modal-name"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              className="alumni-modal-close"
+              onClick={() => setSelectedAlumni(null)}
+              aria-label="Close profile"
+            >
+              <X size={21} />
+            </button>
+
+            <div className="alumni-modal-avatar">
+              <UserRound size={70} strokeWidth={1} />
+            </div>
+
+            <span className="alumni-eyebrow">
+              NDORS ALUMNI · BATCH {selectedAlumni.batch}
+            </span>
+
+            <h2 id="alumni-modal-name">{selectedAlumni.name}</h2>
+
+            <p>{selectedAlumni.role}</p>
+
+            <div className="alumni-modal-info">
+              <span>DEPARTMENT</span>
+              <strong>{selectedAlumni.department}</strong>
+            </div>
+
+            <div className="alumni-modal-note">
+              Profile details will be updated with verified alumni
+              information.
+            </div>
+          </section>
+        </div>
+      )}
     </main>
   )
 }
